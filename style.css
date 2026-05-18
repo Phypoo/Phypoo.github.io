@@ -3,3 +3,47 @@
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
+
+/* Remove default browser spacing */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar container */
+.navbar {
+    position: fixed;     /* stays at top */
+    top: 0;
+    width: 100%;
+    background-color: #111;
+}
+
+/* Remove bullet points */
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;           /* horizontal layout */
+    justify-content: center; /* CENTER items */
+    align-items: center;
+}
+
+/* Space between menu items */
+.navbar li {
+    margin: 0 20px;
+}
+
+/* Link styling */
+.navbar a {
+    display: block;
+    padding: 15px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Hover effect */
+.navbar a:hover {
+    color: #00bfff;
+}
