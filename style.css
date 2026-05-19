@@ -47,3 +47,16 @@ body {
 .navbar a:hover {
     color: #00bfff;
 }
+
+.special {
+    font-size: 28px;
+    margin-top: 15px;
+    margin-left: 5px;
+    color: white;
+}
+
+.normal {
+    font-size: 16px;
+    margin-left: 25px;
+    color: white;
+}
