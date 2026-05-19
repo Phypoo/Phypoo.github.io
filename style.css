@@ -49,14 +49,11 @@ body {
 }
 
 .special {
-    font-size: 28px;
-    margin-top: 15px;
-    margin-left: 5px;
-    color: white;
+    color: lime !important;
+    font-size: 40px !important;
 }
 
 .normal {
-    font-size: 16px;
-    margin-left: 25px;
-    color: white;
+    color: orange !important;
+    font-size: 10px !important;
 }
