@@ -117,3 +117,14 @@ body {
 .content center aligned {
     display: flex;
 }
+
+.content h2 {
+    font-size: 50px; /* Or use pixels like 40px */
+}
+.content h3 {
+    font-size: 15px;
+    font-color: #212c36;
+}
+.content p2 {
+    font-size: 7px;
+}
