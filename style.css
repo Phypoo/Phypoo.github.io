@@ -10,53 +10,110 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Navbar container */
 .navbar {
-    position: fixed;     /* stays at top */
-    top: 0;
-    width: 100%;
-    background-color: #111;
+    width: 320px;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    padding: 10px;
 }
 
-/* Remove bullet points */
+/* Remove ugly list styling */
 .navbar ul {
     list-style: none;
+    display: flex;
+    justify-content: space-around;
     margin: 0;
     padding: 0;
-
-    display: flex;           /* horizontal layout */
-    justify-content: center; /* CENTER items */
-    align-items: center;
 }
 
-/* Space between menu items */
-.navbar li {
-    margin: 0 20px;
-}
-
-/* Link styling */
+/* Dock buttons */
 .navbar a {
-    display: block;
-    padding: 15px 0;
-    color: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    font-size: 18px;
+    color: white;
+    font-size: 24px;
+    border-radius: 12px;
+    transition: all 0.25s ease;
 }
 
-/* Hover effect */
+/* Hover animation */
 .navbar a:hover {
-    color: #00bfff;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
-.special {
-    font-size: 28px;
-    margin-top: 25px;
-    margin-left: 5px;
-    color: white;
+/* Base container styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f4f4f9;
 }
 
-.normal {
-    font-size: 16px;
-    margin-left: 35px;
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 500px; /* Space between the trapezoids */
+    padding-top: 500px;
+}
+
+/* Base Trapezoid Styles */
+.trapezoid {
+    width: 100%;
+    min-height: 1000px;
+    display: flex;
+    align-items: center;
     color: white;
+    transition: clip-path 0.3s ease; /* Smooth scaling if needed */
+}
+
+/* ORIENTATION 1: Long side on LEFT margin
+  Top-right corner moves in to 85%, Bottom-right corner moves in to 85%
+*/
+.left-aligned {
+    background: #212c36;
+    clip-path: polygon(0% 0%, 100% 25%, 100% 75%, 0% 100%);
+    justify-content: flex-start;
+    padding-left: 5%;
+}
+
+/* ORIENTATION 2: Long side on RIGHT margin
+  Top-left corner moves in to 15%, Bottom-left corner stays at 0%
+*/
+.right-aligned {
+    background: #212c36;
+    clip-path: polygon(0% 25%, 100% 0%, 100% 100%, 0% 75%);
+    justify-content: flex-end;
+    padding-right: 5%;
+}
+
+.buttom line {
+    width: 100%;
+    min-height: 1000px;
+    display: flex;
+    align-items: center;
+    color: white;
+    transition: clip-path 0.3s ease; /* Smooth scaling if needed */
+}
+
+.buttom {
+    background:  #212c36;
+    clip-path: polygon(35% 0%, 100% 60%, 100% 100%, 0% 100%, 0% 30%);
+}
+
+/* Content padding so text doesn't get cut off by the angles */
+.content {
+    max-width: 60%;
+    padding: 40px;
+}
+.content center aligned {
+    display: flex;
 }
