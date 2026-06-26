@@ -1,5 +1,5 @@
 body {
-	background: linear-gradient(135deg, #212c36, #706c4d 130%);
+	background: linear-gradient(135deg, #16212b, #002a36 100%);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
@@ -10,13 +10,150 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* Base container styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f4f4f9;
+}
+
+.text {
+    color: #ffffff;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 150px;
+}
+
+#trigger-zone{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+
+    /* THIS is your trigger area */
+    width:350px;
+    height:100px; 
+
+    /* invisible */
+    background:transparent;
+    z-index: 1;
+
+}
+
+#line {
+    position:fixed;
+    margin-top: 10px;
+
+    top:12px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:150px;
+    height:6px;
+
+    border-radius:999px;
+    background:white;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.26);
+
+    transition: transform .65s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+/* when active */
+#line.active{
+    animation: dockAnimationLineUp 0.8s forwards;
+}
+
+@keyframes dockAnimationLineUp{
+
+    0%{
+        transform: translateX(-50%) scale(120%);
+    }
+
+    20%{
+        transform: translateX(-50%) translateY(0px);
+    }
+
+    30%{
+        transform: translateX(-50%) translateY(20px) scale(100%); 
+    }
+
+    60%{
+        transform: translateX(-50%) translateY(15px);
+    }
+
+    100%{
+        transform: translateX(-50%) translateY(-120px);
+    }
+}
+.navbar.active{
+    animation: dockAnimationDockDown 0.8s forwards;
+}
+
+@keyframes dockAnimationDockDown{
+
+    0%{
+        transform: translateX(-50%) translateY(-200px);
+    }
+
+    70%{
+        transform: translateX(-50%) translateY(120px);
+    }
+
+    100%{
+        transform: translateX(-50%) translateY(105px);
+    }
+}
+/* disappearing upward "monitor paradise" effect */
+#line.hide {
+    animation: dockAnimationLineDown 0.8s forwards;
+}
+
+@keyframes dockAnimationLineDown{
+
+    0%{
+        transform: translateX(-50%) translateY(-120px);
+    }
+
+    30%{
+        transform: translateX(-50%) translateY(10px);
+    }
+
+    100%{
+        transform: translateX(-50%) translateY(5px);
+    }
+}
+
+.navbar.hide {
+    animation: dockAnimationDockUp 0.8s forwards;
+}
+@keyframes dockAnimationDockUp{
+
+    0%{
+        transform: translateX(-50%) translateY(105px);
+    }
+
+    90%{
+        transform: translateX(-50%) translateY(120px);
+    }
+
+    100%{
+        transform: translateX(-50%) translateY(-200px);
+    }
+}
+
 .navbar {
-    width: 320px;
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
     margin: 20px auto;
-    background: rgba(255,255,255,0.1);
-    border-radius: 25px;
-    backdrop-filter: blur(10px);
-    border: 3px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.062);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    border: 0px solid rgba(255, 255, 255, 0.15); //there is a border but it is transparent
+    box-shadow: inset 0 0 0 7px rgba(255, 255, 255, 0.61);
     padding: 10px;
 }
 
@@ -25,14 +162,14 @@ body {
     list-style: none;
     display: flex;
     justify-content: space-around;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* Dock buttons */
 .navbar a {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,83 +185,4 @@ body {
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 0 20px rgba(255,255,255,0.2);
-}
-
-/* Base container styling */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background-color: #f4f4f9;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    gap: 500px; /* Space between the trapezoids */
-    padding-top: 500px;
-}
-
-/* Base Trapezoid Styles */
-.trapezoid {
-    width: 100%;
-    min-height: 1000px;
-    display: flex;
-    align-items: center;
-    color: white;
-    transition: clip-path 0.3s ease; /* Smooth scaling if needed */
-}
-
-/* ORIENTATION 1: Long side on LEFT margin
-  Top-right corner moves in to 85%, Bottom-right corner moves in to 85%
-*/
-.left-aligned {
-    background: #212c36;
-    clip-path: polygon(0% 0%, 100% 25%, 100% 75%, 0% 100%);
-    justify-content: flex-start;
-    padding-left: 5%;
-}
-
-/* ORIENTATION 2: Long side on RIGHT margin
-  Top-left corner moves in to 15%, Bottom-left corner stays at 0%
-*/
-.right-aligned {
-    background: #212c36;
-    clip-path: polygon(0% 25%, 100% 0%, 100% 100%, 0% 75%);
-    justify-content: flex-end;
-    padding-right: 5%;
-}
-
-.buttom line {
-    width: 100%;
-    min-height: 1000px;
-    display: flex;
-    align-items: center;
-    color: white;
-    transition: clip-path 0.3s ease; /* Smooth scaling if needed */
-}
-
-.buttom {
-    background:  #212c36;
-    clip-path: polygon(35% 0%, 100% 60%, 100% 100%, 0% 100%, 0% 30%);
-}
-
-/* Content padding so text doesn't get cut off by the angles */
-.content {
-    max-width: 60%;
-    padding: 40px;
-}
-.content center aligned {
-    display: flex;
-}
-
-.content h2 {
-    font-size: 50px; /* Or use pixels like 40px */
-}
-.content h3 {
-    font-size: 15px;
-    font-color: #212c36;
-}
-.content p2 {
-    font-size: 7px;
 }
