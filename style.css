@@ -145,6 +145,9 @@ body {
 
 .navbar {
     position: fixed;
+	display: inline-block;
+	top: max(20px, env(safe-area-inset-top));
+	width: max-content;
     top: -100px;
     left: 50%;
     transform: translateX(-50%);
