@@ -191,6 +191,9 @@ html {
 
 .navbar {
     position: fixed;
+	display: inline-block;
+	top: max(20px, env(safe-area-inset-top));
+	width: max-content;
     top: -100px;
     left: 50%;
     transform: translateX(-50%);
@@ -198,8 +201,10 @@ html {
     background: rgba(255, 255, 255, 0.062);
     border-radius: 20px;
     backdrop-filter: blur(5px);
-    border: 0px solid rgba(255, 255, 255, 0.15); 
+    border: 0px solid rgba(255, 255, 255, 0.15); //there is a border but it is transparent
+    box-shadow: inset 0 0 0 7px rgba(255, 255, 255, 0.61);
     padding: 10px;
+	border: 0px;
 }
 
 /* Remove ugly list styling */
