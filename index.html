@@ -12,6 +12,27 @@
 
 </head>
 
+<?php
+$userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
+$isMobile = false;
+
+// Seznam klíčových slov typických pro mobilní zařízení
+$mobileKeywords = ['mobile', 'android', 'iphone', 'ipad', 'windows phone'];
+
+foreach ($mobileKeywords as $keyword) {
+    if (strpos($userAgent, $keyword) !== false) {
+        $isMobile = true;
+        break;
+    }
+}
+
+if ($isMobile) {
+    echo "Uživatel je na MOBILU.";
+} else {
+    echo "Uživatel je na POČÍTAČI.";
+}
+?>
+
 <body>
 	<section class="text">
 		<div class="left">
