@@ -107,3 +107,9 @@ function deactivate() {
     }, { once: true });
 
 }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    requestAnimationFrame(() => {
+      document.getElementById("dock").classList.add("show");
+    });
+  });
