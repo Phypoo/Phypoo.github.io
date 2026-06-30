@@ -43,25 +43,39 @@ body {
 
 .text {
     color: #ffffff;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-right: 2dvw;
     margin-top: 75%;
 }
 
 .left {
     text-align: left;
     margin-top: 75%;
-    margin-left: 30px;
+    margin-left: 5dvw;
     width: 50%;
 }
 
 .right {
     text-align: right;
     margin-top: 75%;
-    margin-right: 30px;
+    margin-right: 5dvw;
+    text-align: right;
     margin-left: 50%;
     width: 50%;
 }
+
+@media (max-width: 800px) {
+    .left, .right, .head, .paragraph {
+        margin: auto;
+        width:90%;
+        text-align: center;
+        margin-bottom: 10px;  
+    }
+    .left, .right {
+        margin-top: 100%;
+        margin-button: 100%;
+    }
+}
+
 
 .blob1 {
     position:relative;
@@ -139,11 +153,11 @@ body {
     }
 
     70%{
-        transform: translateX(-50%) translateY(10px);
+        transform: translateX(-50%) translateY(20px);
     }
 
     100%{
-        transform: translateX(-50%) translateY(5px);
+        transform: translateX(-50%) translateY(15px);
     }
 }
 /* disappearing upward "monitor paradise" effect */
@@ -172,15 +186,15 @@ body {
 @keyframes dockAnimationDockUp{
 
     0%{
-        transform: translateX(-50%) translateY(105px);
+        transform: translateX(-50%) translateY(15px);
     }
 
     90%{
-        transform: translateX(-50%) translateY(120px);
+        transform: translateX(-50%) translateY(20px);
     }
 
     100%{
-        transform: translateX(-50%) translateY(-200px);
+        transform: translateX(-50%) translateY(-100px);
     }
 }
 
