@@ -135,15 +135,15 @@ body {
 @keyframes dockAnimationDockDown{
 
     0%{
-        transform: translateX(-50%) translateY(-200px);
+        transform: translateX(-50%) translateY(-100px);
     }
 
     70%{
-        transform: translateX(-50%) translateY(120px);
+        transform: translateX(-50%) translateY(10px);
     }
 
     100%{
-        transform: translateX(-50%) translateY(105px);
+        transform: translateX(-50%) translateY(5px);
     }
 }
 /* disappearing upward "monitor paradise" effect */
@@ -228,6 +228,13 @@ body {
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.navbar img {
+    width: 35px;
+    height: 35px;
+    display: block;
+    flex-shrink: 0;
 }
 
 .contact {
