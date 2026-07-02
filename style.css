@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background: linear-gradient(135deg, #ff8800, #ffd000);
+    background:linear-gradient(135deg,#ff8800,#ffd000);    
 	background-repeat: no-repeat;
 	background-attachment: fixed;
     margin: 0;
@@ -80,8 +80,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: right;
-    background-color: #37c4c4;
-
+    background-color: #4cd5e1;
     scroll-snap-align: start;
 }
 
@@ -157,9 +156,19 @@ section {
     padding: 10dvw;
     transform: translate(-50, -50);
     top: 0px;
+    stroke-dasharray: 1420;
+    stroke-dashoffset: 1420;
+    animation: animate 2s ease forwards;
 }
 
-
+@keyframes animate {
+    0% {
+        stroke-dashoffset: 1420;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
 
 @media (max-width: 1000px) {
     #logo {

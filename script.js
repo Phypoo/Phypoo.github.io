@@ -117,5 +117,6 @@ window.addEventListener("wheel", (e) => {
 
   index = Math.max(0, Math.min(index, sections.length - 1));
 
+
   smoothScrollTo(sections[index]);
 }, { passive: true });
