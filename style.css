@@ -378,13 +378,15 @@ section {
 .vBox {
     width: 600px;
     height: 600px;
+    max-width: 90dvw;
+    max-height: 90dvw;
     position: relative;
     background-color: #ffffff62;
     align-items: center;
     border-radius: 25px;
     margin-top: 100px;
     margin-bottom: 100px;
-
+    
 }
 
 #name {
@@ -395,14 +397,16 @@ section {
     top: 70%;
     transform: translate(-50%, -50%);
     left: 50%;
-
+    
 }
 
-.endline {
-    color:#ffffff;
-    font-size: 1dvw;
-    position: absolute;
-    text-align: center;
-    transform: translate(-50%, -50%);
+.footer {
+    display: flex;
     left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.endline {
+    font-size: 30px;
+    color:#ffffff;
 }
