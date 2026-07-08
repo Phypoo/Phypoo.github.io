@@ -90,33 +90,3 @@ function getClosestSection() {
 
   return closestIndex;
 }
-
-function smoothScrollTo(el) {
-  isScrolling = true;
-
-  el.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-
-  setTimeout(() => {
-    isScrolling = false;
-  }, 1200);
-}
-
-window.addEventListener("wheel", (e) => {
-  if (isScrolling) return;
-
-  let index = getClosestSection();
-
-  if (e.deltaY > 0) {
-    index++;
-  } else {
-    index--;
-  }
-
-  index = Math.max(0, Math.min(index, sections.length - 1));
-
-
-  smoothScrollTo(sections[index]);
-}, { passive: true });
