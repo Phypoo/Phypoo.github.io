@@ -120,3 +120,7 @@ window.addEventListener("wheel", (e) => {
 
   smoothScrollTo(sections[index]);
 }, { passive: true });
+
+import { initThree } from "./three.js";
+
+initThree();
