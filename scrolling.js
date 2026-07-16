@@ -79,9 +79,18 @@ function scrollToSection(index) {
 
 window.addEventListener("wheel", (event) => {
 
+
+    // Allow browser zoom with CTRL + mouse wheel
+    if (event.ctrlKey) {
+        return;
+    }
+
+
     event.preventDefault();
 
+
     if (isScrolling) return;
+
 
     if (event.deltaY > 0) {
 
@@ -92,6 +101,7 @@ window.addEventListener("wheel", (event) => {
         scrollToSection(currentSection - 1);
 
     }
+
 
 }, { passive: false });
 
