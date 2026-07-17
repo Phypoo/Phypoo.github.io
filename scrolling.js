@@ -2,16 +2,19 @@
 // SETTINGS
 // ===========================
 
-const SCROLL_DURATION = 1200; // milliseconds
+const SCROLL_DURATION = 1200;
+
 
 // ===========================
-// VARIABLES
+// SECTIONS
 // ===========================
 
-const sections = [...document.querySelectorAll("header, section")];
+const sections = [
+    ...document.querySelectorAll("header, section")
+];
 
-let currentSection = 0;
 let isScrolling = false;
+
 
 // ===========================
 // EASING
@@ -25,43 +28,89 @@ function easeInOutCubic(t) {
 
 }
 
+
 // ===========================
-// ANIMATE SCROLL
+// FIND CLOSEST SECTION
 // ===========================
 
-function scrollToSection(index) {
+function getClosestSection(){
 
-    if (isScrolling) return;
+    let closest = 0;
+    let smallestDistance = Infinity;
 
-    if (index < 0) return;
 
-    if (index >= sections.length) return;
+    sections.forEach((section,index)=>{
+
+        const distance = Math.abs(
+            window.scrollY - section.offsetTop
+        );
+
+
+        if(distance < smallestDistance){
+
+            smallestDistance = distance;
+            closest = index;
+
+        }
+
+    });
+
+
+    return closest;
+
+}
+
+
+// ===========================
+// CUSTOM SCROLL
+// ===========================
+
+function scrollToSection(index){
+
+    if(index < 0 || index >= sections.length){
+        return;
+    }
+
 
     isScrolling = true;
 
+
     const start = window.scrollY;
+
     const target = sections[index].offsetTop;
+
     const distance = target - start;
+
 
     const startTime = performance.now();
 
-    function animate(time) {
+
+
+    function animate(time){
 
         const elapsed = time - startTime;
 
-        const progress = Math.min(elapsed / SCROLL_DURATION, 1);
+        const progress = Math.min(
+            elapsed / SCROLL_DURATION,
+            1
+        );
+
 
         const eased = easeInOutCubic(progress);
 
-        window.scrollTo(0, start + distance * eased);
 
-        if (progress < 1) {
+        window.scrollTo(
+            0,
+            start + distance * eased
+        );
+
+
+        if(progress < 1){
 
             requestAnimationFrame(animate);
 
-        } else {
-
-            currentSection = index;
+        }
+        else{
 
             isScrolling = false;
 
@@ -69,19 +118,21 @@ function scrollToSection(index) {
 
     }
 
+
     requestAnimationFrame(animate);
 
 }
+
 
 // ===========================
 // MOUSE WHEEL
 // ===========================
 
-window.addEventListener("wheel", (event) => {
+window.addEventListener("wheel",(event)=>{
 
 
-    // Allow browser zoom with CTRL + mouse wheel
-    if (event.ctrlKey) {
+    // allow CTRL zoom
+    if(event.ctrlKey){
         return;
     }
 
@@ -89,67 +140,24 @@ window.addEventListener("wheel", (event) => {
     event.preventDefault();
 
 
-    if (isScrolling) return;
+    if(isScrolling){
+        return;
+    }
 
 
-    if (event.deltaY > 0) {
+    const current = getClosestSection();
 
-        scrollToSection(currentSection + 1);
 
-    } else {
+    if(event.deltaY > 0){
 
-        scrollToSection(currentSection - 1);
+        scrollToSection(current + 1);
+
+    }
+    else{
+
+        scrollToSection(current - 1);
 
     }
 
 
-}, { passive: false });
-
-// ===========================
-// KEYBOARD
-// ===========================
-
-window.addEventListener("keydown", (event) => {
-
-    if (isScrolling) return;
-
-    switch (event.key) {
-
-        case "ArrowDown":
-        case "PageDown":
-        case " ":
-
-            event.preventDefault();
-
-            scrollToSection(currentSection + 1);
-
-            break;
-
-        case "ArrowUp":
-        case "PageUp":
-
-            event.preventDefault();
-
-            scrollToSection(currentSection - 1);
-
-            break;
-
-    }
-
-});
-
-// ===========================
-// RESIZE
-// ===========================
-
-window.addEventListener("resize", () => {
-
-    window.scrollTo(0, sections[currentSection].offsetTop);
-
-});
-
-// ===========================
-// START POSITION
-// ===========================
-
-window.scrollTo(0, sections[0].offsetTop);
+},{passive:false});
