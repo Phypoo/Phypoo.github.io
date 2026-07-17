@@ -1,17 +1,19 @@
-"icons": [
-  {
-    "src": "Icons/favicon.svg",
-    "sizes": "512x512",
-    "purpose": "any"
-  },
-  {
-    "src": "Icons/favicon.png",
-    "sizes": "512x512",
-    "purpose": "maskable"
-  },
-  {
-    "src": "Icons/favicon-mono.png",
-    "sizes": "512x512",
-    "purpose": "monochrome"
-  }
-]
+{
+  "icons": [
+    {
+      "src": "Icons/favicon.svg",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "Icons/favicon.png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "Icons/favicon-mono.png",
+      "sizes": "512x512",
+      "purpose": "monochrome"
+    }
+  ]
+}
