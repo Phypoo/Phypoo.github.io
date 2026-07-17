@@ -1,16 +1,17 @@
-{
-  "name": "Phypo",
-  "short_name": "Phypo",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
-  "icons": [
-    {
-      "src": "Icons/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "maskable any"
-    }
-  ]
-}
+"icons": [
+  {
+    "src": "Icons/favicon.svg",
+    "sizes": "512x512",
+    "purpose": "any"
+  },
+  {
+    "src": "Icons/favicon.png",
+    "sizes": "512x512",
+    "purpose": "maskable"
+  },
+  {
+    "src": "Icons/favicon-mono.png",
+    "sizes": "512x512",
+    "purpose": "monochrome"
+  }
+]
