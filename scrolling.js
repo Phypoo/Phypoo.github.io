@@ -1,93 +1,197 @@
 const sections = document.querySelectorAll("header, section");
 
-let scrollTimeout;
-let isSnapping = false;
+let currentSection = 0;
+let scrolling = false;
 
 
-function getClosestSection() {
+function goToSection(index){
 
-    let closest = sections[0];
-    let smallestDistance = Infinity;
-
-    const viewportCenter = window.innerHeight / 2;
+    if(index < 0 || index >= sections.length)
+        return;
 
 
-    sections.forEach(section => {
+    scrolling = true;
 
-        const rect = section.getBoundingClientRect();
+    currentSection = index;
 
-        const sectionCenter = rect.top + rect.height / 2;
 
-        const distance = Math.abs(
-            viewportCenter - sectionCenter
+    const target =
+        sections[index].offsetTop;
+
+
+    animateScroll(
+        window.scrollY,
+        target,
+        1200
+    );
+
+
+    setTimeout(()=>{
+
+        scrolling = false;
+
+    },1200);
+
+}
+
+
+
+function animateScroll(start, end, duration){
+
+    let startTime = null;
+
+
+    function frame(time){
+
+        if(!startTime)
+            startTime = time;
+
+
+        const elapsed = time - startTime;
+
+        const progress =
+            Math.min(elapsed / duration,1);
+
+
+        // cinematic ease
+        const ease =
+        progress < 0.5
+        ?
+        4 * progress * progress * progress
+        :
+        1 - Math.pow(-2 * progress + 2,3)/2;
+
+
+        window.scrollTo(
+            0,
+            start + (end-start)*ease
         );
 
 
-        if(distance < smallestDistance){
-            smallestDistance = distance;
-            closest = section;
+        if(progress < 1){
+
+            requestAnimationFrame(frame);
+
+        }
+
+    }
+
+
+    requestAnimationFrame(frame);
+
+}
+
+
+
+function getCurrentSection(){
+
+    const center =
+    window.scrollY + window.innerHeight/2;
+
+
+    let closest = 0;
+    let distance = Infinity;
+
+
+    sections.forEach((section,index)=>{
+
+        const sectionCenter =
+        section.offsetTop +
+        section.offsetHeight/2;
+
+
+        const diff =
+        Math.abs(center-sectionCenter);
+
+
+        if(diff < distance){
+
+            distance = diff;
+            closest = index;
+
         }
 
     });
 
 
     return closest;
+
 }
 
 
 
-function snapToClosest(){
-
-    if(isSnapping) return;
+window.addEventListener("wheel",(event)=>{
 
 
-    const section = getClosestSection();
-
-
-    const sectionTop = section.offsetTop;
-
-
-    if(Math.abs(window.scrollY - sectionTop) < 5){
+    if(scrolling)
         return;
-    }
 
 
-    isSnapping = true;
+    const direction =
+    event.deltaY > 0 ? 1 : -1;
 
 
-    smoothScrollTo(
-        sectionTop,
-        1300
+    currentSection =
+    getCurrentSection();
+
+
+    goToSection(
+        currentSection + direction
     );
 
 
-    setTimeout(()=>{
-
-        isSnapping=false;
-
-    },1300);
-
-}
+},
+{
+    passive:true
+});
 
 
 
-
-window.addEventListener("scroll",()=>{
-
-
-    if(isSnapping) return;
+let touchStart = 0;
 
 
-    clearTimeout(scrollTimeout);
+window.addEventListener("touchstart",(event)=>{
+
+    touchStart =
+    event.touches[0].clientY;
+
+});
 
 
 
-    scrollTimeout=setTimeout(()=>{
+window.addEventListener("touchend",(event)=>{
 
-        snapToClosest();
 
-    },120);
+    if(scrolling)
+        return;
 
+
+    const touchEnd =
+    event.changedTouches[0].clientY;
+
+
+    const difference =
+    touchStart - touchEnd;
+
+
+    if(Math.abs(difference)<50)
+        return;
+
+
+    currentSection =
+    getCurrentSection();
+
+
+    if(difference > 0){
+
+        goToSection(currentSection+1);
+
+    }
+    else{
+
+        goToSection(currentSection-1);
+
+    }
 
 
 });
