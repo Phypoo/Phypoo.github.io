@@ -7,10 +7,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="src/style.css">
 	<script src="main.js" defer></script>
-	<script src="src/three.js" defer></script>
-	<script src="scrolling.js" defer></script>
+	<script src="scrolling.js" type="module"></script>
+	<script src="animations.js" type="module"></script>
 	<title>Phypo</title>
-	<link rel="icon" type="image/svg+xml" href="Icons/favicon.svg">
+	<link rel="icon" type="image/svg+xml" href="Icons/favicon.svg">	
 	<link rel="manifest" href="/manifest.json">
 
 </head>
@@ -34,7 +34,7 @@
 				style="fill:none;stroke:#fff;stroke-width:15px;stroke-linecap:butt;stroke-miterlimit:2;" />
 		</svg>
 		<div class="blob1">
-			<h1 class="head">Grafika & Dizajn</h1>
+			<h1 class="head", id="firstHead">Grafika & Dizajn</h1>
 			<p class="paragraph">Predstav si že si začínajúca firma alebo si si riadil živnosť. Častokrát krastu tvojej
 				firmy alebo jej povedomia nestačí len názov. Potrebuješ zaujať na prvý dojem a na to potrebuješ parádne
 				logo. Vytvoriť ti ničo pútavé pre mňa nie je žiaden problém. Venujem sa totižto dizajnu a vektorovej
