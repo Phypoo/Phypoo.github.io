@@ -163,7 +163,7 @@ section {
     max-width: 1100px;
 }
 
-#logo.active {
+#logo {
     order: 2;
     width: 500px;
     height: 500px;
@@ -174,10 +174,6 @@ section {
     stroke-dashoffset: 1420;
     animation: animate 2s ease forwards;
     filter: drop-shadow(0 0 10px #ffffff);
-}
-
-#logo {
-    display: none
 }
 
 @keyframes animate {
