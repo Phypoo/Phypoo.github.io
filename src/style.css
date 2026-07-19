@@ -189,6 +189,7 @@ section {
     #logo {
         width: 500px;
         height: 500px;
+        max-width: 80%;
         padding: 10dvw;
         transform: translate(-50, -50);
         top: 0px;
