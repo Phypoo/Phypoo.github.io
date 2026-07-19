@@ -6,13 +6,17 @@ let currentSection = 0;
 let isScrolling = false;
 
 
-window.addEventListener("wheel", (event)=> {
+window.addEventListener("wheel", function(event){
 
     event.preventDefault();
+
 
     if(isScrolling){
         return;
     }
+
+
+    updateCurrentSection();
 
 
     if(event.deltaY > 0){
@@ -90,11 +94,15 @@ function scrollToSection(index){
         }
         else{
 
+            window.scrollTo(
+                0,
+                targetPosition
+            );
+
+
             isScrolling = false;
 
         }
-
-
     }
 
 
@@ -183,6 +191,33 @@ function handleSwipe(){
 
     scrollToSection(currentSection);
 
+
+}
+
+function updateCurrentSection(){
+
+    let closestSection = 0;
+    let smallestDistance = Infinity;
+
+
+    sections.forEach(function(section, index){
+
+        const distance = Math.abs(
+            section.offsetTop - window.scrollY
+        );
+
+
+        if(distance < smallestDistance){
+
+            smallestDistance = distance;
+            closestSection = index;
+
+        }
+
+    });
+
+
+    currentSection = closestSection;
 
 }
 
