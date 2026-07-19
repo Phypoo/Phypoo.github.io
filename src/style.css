@@ -1,8 +1,6 @@
-html {
-    scroll-snap-type: y proximity;
-    scroll-behavior: smooth;
+html, body {
+    overscroll-behavior: none;
 }
-
 
 body {
     background:linear-gradient(135deg,#ff8800,#d0ff00);    
@@ -13,10 +11,6 @@ body {
     font-family: sans-serif;
     background-color: #f4f4f9;
 }
-
-/* .snapping{
-    scroll-snap-type: y mandatory;
-} */
 
 .welcome {
     display: flex;
@@ -32,8 +26,6 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
 }
 
 
@@ -87,8 +79,6 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
 }
 
 #designing {

@@ -1,21 +1,22 @@
 const sections = document.querySelectorAll("header, section");
-
 const sectionCount = sections.length;
+
 
 let currentSection = 0;
 let isScrolling = false;
 
 
-// Send data to animations.js later
+// For animations.js
 export { sections, sectionCount };
 
 
 
-// =========================
-// DESKTOP SCROLL
-// =========================
+// ==============================
+// DESKTOP MOUSE WHEEL
+// ==============================
 
 window.addEventListener("wheel", function(event){
+
 
     event.preventDefault();
 
@@ -26,6 +27,7 @@ window.addEventListener("wheel", function(event){
 
 
     updateCurrentSection();
+
 
 
     if(event.deltaY > 0){
@@ -40,10 +42,12 @@ window.addEventListener("wheel", function(event){
     }
 
 
-    limitSection();
+
+    clampSection();
 
 
     scrollToSection(currentSection);
+
 
 
 }, { passive:false });
@@ -51,18 +55,46 @@ window.addEventListener("wheel", function(event){
 
 
 
-// =========================
+
+
+
+// ==============================
 // MOBILE TOUCH
-// =========================
+// ==============================
+
 
 let touchStartY = 0;
+let touchEndY = 0;
+
 
 
 window.addEventListener("touchstart", function(event){
 
+
+    if(isScrolling){
+        return;
+    }
+
+
     touchStartY = event.touches[0].clientY;
 
-});
+
+}, {passive:false});
+
+
+
+
+
+window.addEventListener("touchmove", function(event){
+
+
+    event.preventDefault();
+
+
+}, {passive:false});
+
+
+
 
 
 
@@ -74,15 +106,17 @@ window.addEventListener("touchend", function(event){
     }
 
 
-    const touchEndY = event.changedTouches[0].clientY;
+
+    touchEndY = event.changedTouches[0].clientY;
+
 
 
     const distance = touchStartY - touchEndY;
 
 
 
-    // Ignore tiny movements
-    if(Math.abs(distance) < 80){
+    // Ignore small touches
+    if(Math.abs(distance) < 70){
 
         return;
 
@@ -106,21 +140,26 @@ window.addEventListener("touchend", function(event){
     }
 
 
-    limitSection();
+
+    clampSection();
 
 
     scrollToSection(currentSection);
 
 
-});
+
+}, {passive:false});
 
 
 
 
 
-// =========================
-// FIND REAL SECTION POSITION
-// =========================
+
+
+
+// ==============================
+// FIND REAL CURRENT SECTION
+// ==============================
 
 function updateCurrentSection(){
 
@@ -134,9 +173,11 @@ function updateCurrentSection(){
     sections.forEach(function(section,index){
 
 
+
         const distance = Math.abs(
-            section.offsetTop - window.scrollY
+            window.scrollY - section.offsetTop
         );
+
 
 
         if(distance < smallestDistance){
@@ -146,6 +187,7 @@ function updateCurrentSection(){
             closest = index;
 
         }
+
 
 
     });
@@ -161,11 +203,13 @@ function updateCurrentSection(){
 
 
 
-// =========================
-// KEEP INDEX INSIDE LIMITS
-// =========================
 
-function limitSection(){
+
+// ==============================
+// LIMIT SECTION NUMBER
+// ==============================
+
+function clampSection(){
 
 
     if(currentSection < 0){
@@ -182,15 +226,18 @@ function limitSection(){
 
     }
 
+
 }
 
 
 
 
 
-// =========================
+
+
+// ==============================
 // CUSTOM SMOOTH SCROLL
-// =========================
+// ==============================
 
 function scrollToSection(index){
 
@@ -199,53 +246,54 @@ function scrollToSection(index){
 
 
 
-    const targetPosition = sections[index].offsetTop;
+    const start = window.scrollY;
+
+    const target = sections[index].offsetTop;
 
 
-    const startPosition = window.scrollY;
-
-
-    const distance = targetPosition - startPosition;
+    const distance = target - start;
 
 
 
     const duration = 1000;
 
 
+
     let startTime = null;
 
 
 
-    function animation(currentTime){
+
+    function animate(time){
 
 
 
         if(startTime === null){
 
-            startTime = currentTime;
+            startTime = time;
 
         }
 
 
 
-        const timePassed = currentTime - startTime;
+        const elapsed = time - startTime;
 
 
 
         const progress = Math.min(
-            timePassed / duration,
+            elapsed / duration,
             1
         );
 
 
 
-        const ease = easeInOutCubic(progress);
+        const eased = easeInOut(progress);
 
 
 
         window.scrollTo(
             0,
-            startPosition + distance * ease
+            start + distance * eased
         );
 
 
@@ -253,16 +301,17 @@ function scrollToSection(index){
         if(progress < 1){
 
 
-            requestAnimationFrame(animation);
+            requestAnimationFrame(animate);
 
 
         }
         else{
 
 
+            // Force exact position
             window.scrollTo(
                 0,
-                targetPosition
+                target
             );
 
 
@@ -271,7 +320,7 @@ function scrollToSection(index){
 
 
 
-            sendSectionChange(index);
+            sendSectionEvent(index);
 
 
         }
@@ -281,7 +330,7 @@ function scrollToSection(index){
 
 
 
-    requestAnimationFrame(animation);
+    requestAnimationFrame(animate);
 
 
 }
@@ -290,11 +339,13 @@ function scrollToSection(index){
 
 
 
-// =========================
-// SMOOTH CURVE
-// =========================
 
-function easeInOutCubic(t){
+
+// ==============================
+// SMOOTH CURVE
+// ==============================
+
+function easeInOut(t){
 
 
     return t < 0.5
@@ -310,11 +361,13 @@ function easeInOutCubic(t){
 
 
 
-// =========================
-// MESSAGE FOR animations.js
-// =========================
 
-function sendSectionChange(index){
+
+// ==============================
+// ANIMATION EVENT
+// ==============================
+
+function sendSectionEvent(index){
 
 
     window.dispatchEvent(
@@ -322,10 +375,15 @@ function sendSectionChange(index){
         new CustomEvent(
             "sectionChanged",
             {
+
                 detail:{
+
                     currentSection:index
+
                 }
+
             }
+
         )
 
     );
