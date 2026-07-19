@@ -6,6 +6,15 @@ let currentSection = 0;
 let isScrolling = false;
 
 
+// Send data to animations.js later
+export { sections, sectionCount };
+
+
+
+// =========================
+// DESKTOP SCROLL
+// =========================
+
 window.addEventListener("wheel", function(event){
 
     event.preventDefault();
@@ -31,138 +40,61 @@ window.addEventListener("wheel", function(event){
     }
 
 
-    if(currentSection < 0){
-        currentSection = 0;
-    }
-
-
-    if(currentSection >= sectionCount){
-        currentSection = sectionCount - 1;
-    }
+    limitSection();
 
 
     scrollToSection(currentSection);
 
 
-}, {passive:false});
-
-
-function scrollToSection(index){
-
-    isScrolling = true;
-
-
-    const targetPosition = sections[index].offsetTop;
-
-    const startPosition = window.scrollY;
-
-    const distance = targetPosition - startPosition;
-
-    const duration = 1200;
-
-    let startTime = null;
-
-
-    function animation(currentTime){
-
-
-        if(startTime === null){
-
-            startTime = currentTime;
-
-        }
-
-
-        const timePassed = currentTime - startTime;
-
-        const progress = Math.min(timePassed / duration, 1);
-
-
-        const ease = easeInOutCubic(progress);
-
-
-        window.scrollTo(
-            0,
-            startPosition + distance * ease
-        );
-
-
-        if(progress < 1){
-
-            requestAnimationFrame(animation);
-
-        }
-        else{
-
-            window.scrollTo(
-                0,
-                targetPosition
-            );
-
-
-            isScrolling = false;
-
-        }
-    }
-
-
-    requestAnimationFrame(animation);
-
-}
+}, { passive:false });
 
 
 
-function easeInOutCubic(t){
 
-    return t < 0.5
-    ? 4 * t * t * t
-    : 1 - Math.pow(-2 * t + 2, 3) / 2;
+// =========================
+// MOBILE TOUCH
+// =========================
 
-}
-
-let touchStart = 0;
-let touchEnd = 0;
+let touchStartY = 0;
 
 
 window.addEventListener("touchstart", function(event){
 
-    touchStart = event.touches[0].clientY;
+    touchStartY = event.touches[0].clientY;
 
 });
+
 
 
 window.addEventListener("touchend", function(event){
 
-    touchEnd = event.changedTouches[0].clientY;
-
-
-    handleSwipe();
-
-});
-
-
-
-function handleSwipe(){
-
-
-    const swipeDistance = touchStart - touchEnd;
-
-
-    if(Math.abs(swipeDistance) < 50){
-
-        return;
-
-    }
-
 
     if(isScrolling){
+        return;
+    }
+
+
+    const touchEndY = event.changedTouches[0].clientY;
+
+
+    const distance = touchStartY - touchEndY;
+
+
+
+    // Ignore tiny movements
+    if(Math.abs(distance) < 80){
 
         return;
 
     }
 
 
-    if(swipeDistance > 0){
+
+    updateCurrentSection();
+
+
+
+    if(distance > 0){
 
         currentSection++;
 
@@ -174,33 +106,33 @@ function handleSwipe(){
     }
 
 
-
-    if(currentSection < 0){
-
-        currentSection = 0;
-
-    }
-
-
-    if(currentSection >= sectionCount){
-
-        currentSection = sectionCount - 1;
-
-    }
+    limitSection();
 
 
     scrollToSection(currentSection);
 
 
-}
+});
+
+
+
+
+
+// =========================
+// FIND REAL SECTION POSITION
+// =========================
 
 function updateCurrentSection(){
 
-    let closestSection = 0;
+
+    let closest = 0;
+
     let smallestDistance = Infinity;
 
 
-    sections.forEach(function(section, index){
+
+    sections.forEach(function(section,index){
+
 
         const distance = Math.abs(
             section.offsetTop - window.scrollY
@@ -210,15 +142,193 @@ function updateCurrentSection(){
         if(distance < smallestDistance){
 
             smallestDistance = distance;
-            closestSection = index;
+
+            closest = index;
 
         }
+
 
     });
 
 
-    currentSection = closestSection;
+
+    currentSection = closest;
+
 
 }
 
-export { sections, sectionCount };
+
+
+
+
+// =========================
+// KEEP INDEX INSIDE LIMITS
+// =========================
+
+function limitSection(){
+
+
+    if(currentSection < 0){
+
+        currentSection = 0;
+
+    }
+
+
+
+    if(currentSection >= sectionCount){
+
+        currentSection = sectionCount - 1;
+
+    }
+
+}
+
+
+
+
+
+// =========================
+// CUSTOM SMOOTH SCROLL
+// =========================
+
+function scrollToSection(index){
+
+
+    isScrolling = true;
+
+
+
+    const targetPosition = sections[index].offsetTop;
+
+
+    const startPosition = window.scrollY;
+
+
+    const distance = targetPosition - startPosition;
+
+
+
+    const duration = 1000;
+
+
+    let startTime = null;
+
+
+
+    function animation(currentTime){
+
+
+
+        if(startTime === null){
+
+            startTime = currentTime;
+
+        }
+
+
+
+        const timePassed = currentTime - startTime;
+
+
+
+        const progress = Math.min(
+            timePassed / duration,
+            1
+        );
+
+
+
+        const ease = easeInOutCubic(progress);
+
+
+
+        window.scrollTo(
+            0,
+            startPosition + distance * ease
+        );
+
+
+
+        if(progress < 1){
+
+
+            requestAnimationFrame(animation);
+
+
+        }
+        else{
+
+
+            window.scrollTo(
+                0,
+                targetPosition
+            );
+
+
+
+            isScrolling = false;
+
+
+
+            sendSectionChange(index);
+
+
+        }
+
+
+    }
+
+
+
+    requestAnimationFrame(animation);
+
+
+}
+
+
+
+
+
+// =========================
+// SMOOTH CURVE
+// =========================
+
+function easeInOutCubic(t){
+
+
+    return t < 0.5
+
+    ? 4 * t * t * t
+
+    : 1 - Math.pow(-2 * t + 2,3) / 2;
+
+
+}
+
+
+
+
+
+// =========================
+// MESSAGE FOR animations.js
+// =========================
+
+function sendSectionChange(index){
+
+
+    window.dispatchEvent(
+
+        new CustomEvent(
+            "sectionChanged",
+            {
+                detail:{
+                    currentSection:index
+                }
+            }
+        )
+
+    );
+
+
+}
