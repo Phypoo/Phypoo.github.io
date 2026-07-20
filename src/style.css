@@ -20,7 +20,7 @@ body {
     left: 0;
     font-size: 30px;
     width: 100%;
-    height: 100svh;
+    height: 120svh;
     color: #ffffff;
     display: flex;
     justify-content: center;
@@ -61,14 +61,14 @@ body {
 }
 
 .left {
-    height: 100svh;
+    height: 120svh;
     width: 100%;
     display: flex;
     align-items: center;
 }
 
 .right {
-    height: 100svh;
+    height: 120svh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -76,14 +76,17 @@ body {
 }
 
 section {
-    min-height: 100vh;
+    min-height: 120vh;
     display: flex;
     align-items: center;
+    transform: translateY(-10svh);
+
 }
 
 #designing {
     position: relative;
-    background-color: #db5b5b;
+    /* background-color: #db5b5b; */
+    background-color: #090829;
     justify-content: center;
     align-items: center;
 }
@@ -480,9 +483,6 @@ section {
 
 .contact {
     font-family: "Schoolbell", cursive;
-    background: linear-gradient(135deg, #ff8800, #ffd000);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 .schoolbell-regular {
@@ -497,11 +497,12 @@ section {
     align-items: center;
 }
 .vBox {
+    display: flex;
     width: 600px;
     height: 600px;
     position: relative;
-    background-color: #ffffff62;
-    align-items: center;
+    background-color: #ffffff2f;
+    justify-content: center;
     border-radius: 25px;
     margin-top: 100px;
     margin-bottom: 100px;
@@ -515,7 +516,23 @@ section {
     font-size: 50px;
     top: 70%;
     transform: translate(-50%, -50%);
+    justify-content: center;
     left: 50%;
+    filter: drop-shadow(0 0 10px #f7f5f598);
+
+
+}
+
+#name::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 5px;
+    bottom: -10px;
+    right: 10%;
+    background-color:#ffffff88;
+    border-radius: 1.5px;
+    filter: drop-shadow(0 0 10px #f7f5f598);
 
 }
 
@@ -526,4 +543,35 @@ section {
     text-align: center;
     transform: translate(-50%, -50%);
     left: 50%;
+}
+
+.icons {
+    display: flex;
+    position: absolute;
+    width: 40%;
+    height: 50px;
+    transform: translateX(50%);
+    transform: translateY(-50%);
+    bottom: 0%;
+    justify-content: space-between;
+    align-items: center;
+    color: #db5b5b;
+}
+
+ion-icon {
+    font-size: 35px;
+    color: #f4f4f9;
+   filter: drop-shadow(0 0 10px #f7f5f598);
+
+}
+
+img {
+    position: absolute;
+    display:flex;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateX(50%);
+    transform: translateY(-50%);
 }
