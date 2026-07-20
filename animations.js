@@ -26,6 +26,7 @@ window.addEventListener("sectionChanged", function(event){
 
 
 const logo = document.getElementById("logo");
+const designing = document.getElementById("designing");
 const text = document.querySelector(".blob1");
 
 function startSectionOneAnimation(){
@@ -46,6 +47,7 @@ function startSectionOneAnimation(){
 
         text.classList.add("active");
 
+        designing.classList.add("active");
         logo.classList.remove("active");
         logo.classList.add("moved");
 
