@@ -1,22 +1,58 @@
-import { sections, sectionCount } from "./scrolling.js";
-
-const logo = document.getElementById('logo');
-
-window.addEventListener("sectionChanged", (event)=>{
+// animations.js
 
 
-    let currentSection = event.detail.currentSection;
+window.addEventListener("sectionChanged", function(event){
 
 
-    if(currentSection == 1){
+    const currentSection = event.detail.currentSection;
 
-        logo.classList.add('active');
+
+
+    console.log("Current section:", currentSection);
+
+
+
+    if(currentSection === 1){
+
+        startSectionOneAnimation();
 
     }
-    else {
-        logo.classList.remove('active');
-    }
 
-}); 
 
-console.log("animations.js loaded");
+});
+
+
+
+
+
+const logo = document.getElementById("logo");
+const text = document.querySelector(".blob1");
+
+function startSectionOneAnimation(){
+
+
+    // first animation
+    logo.classList.add("active");
+
+
+
+    // wait until logo animation finishes
+
+    logo.addEventListener("animationend", function(){
+
+
+
+        // second animation starts
+
+        text.classList.add("active");
+
+        logo.classList.remove("active");
+        logo.classList.add("moved");
+
+
+
+    }, {once:true});
+
+
+
+}

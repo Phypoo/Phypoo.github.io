@@ -9,8 +9,10 @@
 	<script src="main.js" defer></script>
 	<script src="scrolling.js" type="module"></script>
 	<script src="animations.js" type="module"></script>
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+	<script src="morphing.js" type="module"></script>
 	<title>Phypo</title>
-	<link rel="icon" type="image/svg+xml" href="Icons/favicon.svg">	
+	<link rel="icon" type="image/svg+xml" href="Icons/favicon.svg">
 	<link rel="manifest" href="/manifest.json">
 
 </head>
@@ -21,8 +23,9 @@
 			<p>Vitaj na mojej novej stranke</p>
 		</header>
 		<section class="left" , id="designing">
-			<svg id="logo" width="100%" height="100%" viewBox="0 0 709 709" version="1.1" xmlns="http://www.w3.org/2000/svg"
-				xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+			<svg id="logo" width="100%" height="100%" viewBox="0 0 709 709" version="1.1"
+				xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+				xmlns:serif="http://www.serif.com/"
 				style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
 				<path
 					d="M170.079,651.969c-15.036,-0 -29.456,-5.973 -40.088,-16.605c-10.632,-10.632 -16.605,-25.053 -16.605,-40.088l-0,-379.843c-0,-15.655 12.691,-28.346 28.346,-28.346l42.52,-0c15.655,-0 28.346,12.691 28.346,28.346l0,308.976c0,7.518 2.987,14.728 8.303,20.044c5.316,5.316 12.526,8.303 20.044,8.303l123.307,-0c7.518,-0 14.728,2.986 20.044,8.302c5.316,5.316 8.302,12.526 8.302,20.044l0,42.52c0,15.655 -12.691,28.347 -28.346,28.347l-194.173,-0Z"
@@ -35,9 +38,11 @@
 					style="fill:none;stroke:#fff;stroke-width:15px;stroke-linecap:butt;stroke-miterlimit:2;" />
 			</svg>
 			<div class="blob1">
-				<h1 class="head", id="firstHead">Grafika & Dizajn</h1>
-				<p class="paragraph">Predstav si že si začínajúca firma alebo si si riadil živnosť. Častokrát krastu tvojej
-					firmy alebo jej povedomia nestačí len názov. Potrebuješ zaujať na prvý dojem a na to potrebuješ parádne
+				<h1 class="head" , id="firstHead">Grafika & Dizajn</h1>
+				<p class="paragraph">Predstav si že si začínajúca firma alebo si si riadil živnosť. Častokrát krastu
+					tvojej
+					firmy alebo jej povedomia nestačí len názov. Potrebuješ zaujať na prvý dojem a na to potrebuješ
+					parádne
 					logo. Vytvoriť ti ničo pútavé pre mňa nie je žiaden problém. Venujem sa totižto dizajnu a vektorovej
 					grafike. Vezmime si toto Logo a poďme ďalej...</p>
 			</div>
@@ -46,7 +51,8 @@
 			<canvas id="3Dcontainer"></canvas>
 			<div class="blob2">
 				<h1 class="head-right">3D Modelovanie</h1>
-				<p class="paragraph-right">V istom bode začne by 2-rozmerná grafika celkom nudná. Veľakrát sa snažím týmto
+				<p class="paragraph-right">V istom bode začne by 2-rozmerná grafika celkom nudná. Veľakrát sa snažím
+					týmto
 					projektom dať život skrze tretiu dimenziu. A načo je to dobré? Na všetko. Či už potrebuješ len
 					jednoduchú kľučenky alebo poriadnu opravu oplámanej súčiastky.</p>
 			</div>
@@ -54,7 +60,8 @@
 		<section class="left" , id="printing">
 			<div class="blob3">
 				<h1 class="head-right">3D Tlač</h1>
-				<p class="paragraph">Aj keď ma práca s počítačom baví, veľakrát pracujem len s abstraktným materiálom. Ale,
+				<p class="paragraph">Aj keď ma práca s počítačom baví, veľakrát pracujem len s abstraktným materiálom.
+					Ale,
 					pri svojom výskume a bádaní na internete som s dostal k 3D tlačiarni..</p>
 			</div>
 		</section>
@@ -67,12 +74,19 @@
 		<section class="left" , id="vcards">
 			<div class="blob5">
 				<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-				<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg id="svg5"
-					width="100%" height="100%" viewBox="0 0 346 195" version="1.1" xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+				<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg
+					id="svg5" width="100%" height="100%" viewBox="0 0 346 195" version="1.1"
+					xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+					xmlns:serif="http://www.serif.com/"
 					style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-					<path
+					<path id="shape1"
 						d="M0,45c-1.702,-1.702 9.884,-8.705 29.009,4.971c4.863,3.478 13.262,16.547 49.792,0.149c1.137,-0.51 2.216,-1.142 3.348,-1.664c0.9,-0.415 18.531,-9.389 35.299,-9.839c12.552,-0.337 18.193,4.911 20.648,7.455c7.514,7.79 23.798,29.759 38.686,30.911c4.944,0.382 20.401,-1.058 26.618,7.617c3.378,4.713 6.198,9.38 3.6,23.4c-2.697,14.558 -5.286,12.515 -4.256,28.196c0.657,9.992 1.505,25.58 -11.944,29.404c-18.185,5.17 -36.621,-17.861 -59.087,-21.033c-12.487,-1.763 -30.865,5.039 -41.713,12.033c-11.266,7.263 -22.311,20.313 -39.6,21.6c-16.651,1.24 -46.231,-14.116 -50.4,-16.2l-0,-117Z"
+						style="fill:rgb(16, 107, 69);" />
+					<path id="shape2"
+						d="M-0.165,68.4c22.064,-11.032 39.751,-24.362 59.94,-19.6c17.203,4.057 26.62,25.05 63.297,23.125c16.981,-0.891 39.751,-27.639 59.32,-18.318c7.14,3.401 15.06,14.148 17.583,25.866c4.444,20.635 6.265,20.045 14.984,32.546c6.301,9.035 9.698,21.481 7.809,29.433c-2.594,10.915 -15.263,24.566 -22.584,26.563c-12.166,3.318 -37.694,-5.494 -52.584,1.185c-7.945,3.564 -25.237,16.471 -43.075,17.853c-7.38,0.571 -34.275,-2.951 -51.906,-10.737c-9.46,-4.177 -9.268,-4.672 -19.253,-7.452c-21.424,-5.967 -32.166,-0.864 -33.366,0.336l-0.165,-100.8Z"
+						style="fill:rgb(16, 107, 69);" />
+					<path id="shape3"
+						d="M-0.165,32.4c26.002,-1.04 28.088,-7.609 54.359,12.093c23.706,17.78 33.996,9.149 59.206,4.107c19.487,-3.897 34.755,-4.533 52.561,4.37c16.754,8.377 17.305,6.907 36.105,6.907c13.962,0 27.446,10.791 42.734,33.723c3.558,5.337 8.919,27.801 -0.978,40.998c-18.6,24.8 -33.56,22.861 -41.442,24.174c-15.383,2.564 -27.897,18.331 -61.98,21.228c-22.423,1.906 -66.053,-16.907 -88.404,-12.437c-2.962,0.593 -12.905,0.872 -25.744,4.082c-17.791,4.447 -24.462,2.132 -26.417,1.155"
 						style="fill:rgb(16, 107, 69);" />
 				</svg>
 				<h1 class="head">eVizitky</h1>
@@ -98,4 +112,5 @@
 	</nav>
 	<div id="line"></div>
 </body>
+
 </html>

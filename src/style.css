@@ -82,9 +82,60 @@ section {
 }
 
 #designing {
+    position: relative;
     background-color: #db5b5b;
+    justify-content: center;
+    align-items: center;
 }
+
+#logo {
+    display: none;
+}
+
+#logo.active {
+    display: block;
+    position: absolute;
+    order: 2;
+    width: 700px;
+    height: 700px;
+    padding: 10dvw;
+    transform: translate(-50, -50);
+    align-items: center;
+    justify-content: center;    
+    stroke-dasharray: 1420;
+    stroke-dashoffset: 1420;
+    animation: animate 2s ease forwards;
+    filter: drop-shadow(0 0 10px #ffffff);
+}
+
+#logo.moved {
+    display: block;
+    order: 2;
+    width: 700px;
+    height: 700px;
+    padding: 10dvw;
+    transform: translate(-50, -50);
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+    filter: drop-shadow(0 0 10px #ffffff);
+}
+
+@keyframes animate {
+    0% {
+        stroke-dashoffset: 1420;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
 .blob1 {
+    display: none;
+}
+
+.blob1.active {
+    display: block;
     order: 1;
     display: flex;
     flex-direction: column; 
@@ -92,6 +143,7 @@ section {
     margin-left: 5dvh;
     width: 40%;
     max-width: 1100px;
+    animation: animate 2s ease forwards;
 }
 
 #modeling {
@@ -167,30 +219,14 @@ section {
     max-width: 1100px;
 }
 
-#logo {
-    order: 2;
-    width: 500px;
-    height: 500px;
-    padding: 10dvw;
-    transform: translate(-50, -50);
-    top: 0px;
-    stroke-dasharray: 1420;
-    stroke-dashoffset: 1420;
-    animation: animate 2s ease forwards;
-    filter: drop-shadow(0 0 10px #ffffff);
-}
-
-@keyframes animate {
-    0% {
-        stroke-dashoffset: 1420;
-    }
-    100% {
-        stroke-dashoffset: 0;
-    }
-}
 
 @media (max-width: 1000px) {
     #logo {
+        display: none;
+    }
+    
+    #logo.active {
+        display: block;
         width: 500px;
         height: 500px;
         max-width: 80%;
@@ -198,8 +234,13 @@ section {
         transform: translate(-50, -50);
         top: 0px;
         order: 1;
-
     }
+
+    #logo.moved {
+        display: block;
+        order: 1;
+    }
+
     .left, .right {
         flex-direction: column;
         justify-content: center;
