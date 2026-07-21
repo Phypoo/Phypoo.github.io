@@ -3,13 +3,18 @@ html, body {
 }
 
 body {
-    background:linear-gradient(135deg,#ff8800,#d0ff00);    
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+    /* background:linear-gradient(135deg,#ff8800,#d0ff00);     */
+    /* use a valid radial gradient (angle not valid for radial) */
+    background:
+        radial-gradient(circle at 20% 20%, #143847 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, #34043d 0%, transparent 50%),
+        radial-gradient(circle at 20% 50%, #690c5a 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, #1100a7 0%, transparent 50%),
+        #050511;    
+    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-color: #f4f4f9;
 }
 
 .welcome {
@@ -86,7 +91,7 @@ section {
 #designing {
     position: relative;
     /* background-color: #db5b5b; */
-    background-color: #090829;
+    /* background-color: #090829; */
     justify-content: center;
     align-items: center;
 }
@@ -150,7 +155,7 @@ section {
 }
 
 #modeling {
-    background-color: #4cd5e1;
+    /* background-color: #4cd5e1; */
 }
 
 .blob2 {
@@ -164,7 +169,7 @@ section {
 }
 
 #printing {
-    background-color: #fdb100;
+    /* background-color: #fdb100; */
 }
 
 .blob3 {
@@ -177,7 +182,7 @@ section {
 }
 
 #propagation {
-    background-color: #9ad300;
+    /* background-color: #9ad300; */
 }
 
 .blob4 {
@@ -191,7 +196,7 @@ section {
 }
 
 #vcards {
-    background-color: #26874c;
+    /* background-color: #26874c; */
 }
 
 .blob5 {
@@ -209,7 +214,7 @@ section {
 }
 
 #webdesign {
-    background-color: #aa5ae0;
+    /* background-color: #aa5ae0; */
 }
 
 .blob6 {
@@ -248,6 +253,11 @@ section {
         max-width: 80%;
         order: 1;
         animation: logoMovedMobile 2s ease forwards;
+
+        @starting-style {
+         width: 700px;
+         height: 700px;
+        }
     }
 
     @keyframes logoMovedMobile {
@@ -501,11 +511,14 @@ section {
     width: 600px;
     height: 600px;
     position: relative;
-    background-color: #ffffff2f;
+    background-color: rgba(255, 255, 255, 0.062);
+    backdrop-filter: blur(10px);
     justify-content: center;
     border-radius: 25px;
     margin-top: 100px;
     margin-bottom: 100px;
+    border-top: 1px solid #f4f4f98c;
+    border-left: 1px solid #f4f4f993;
 
 }
 
@@ -514,7 +527,7 @@ section {
     position: absolute;
     text-align: center;
     font-size: 50px;
-    top: 70%;
+    top: 65%;
     transform: translate(-50%, -50%);
     justify-content: center;
     left: 50%;
@@ -528,10 +541,10 @@ section {
     position: absolute;
     width: 80%;
     height: 5px;
-    bottom: -10px;
+    bottom: -15px;
     right: 10%;
     background-color:#ffffff88;
-    border-radius: 1.5px;
+    border-radius: 3px;
     filter: drop-shadow(0 0 10px #f7f5f598);
 
 }
@@ -552,7 +565,7 @@ section {
     height: 50px;
     transform: translateX(50%);
     transform: translateY(-50%);
-    bottom: 0%;
+    bottom: 5%;
     justify-content: space-between;
     align-items: center;
     color: #db5b5b;
@@ -571,7 +584,7 @@ img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    top: 50%;
+    top: 40%;
     transform: translateX(50%);
     transform: translateY(-50%);
 }
