@@ -1,5 +1,5 @@
 {
-  "name": "phypoo-github-io",
+  "name": "vite-project",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^8.1.1"
+  },
+  "dependencies": {
+    "three": "^0.185.1"
   }
 }

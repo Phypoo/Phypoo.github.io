@@ -155,11 +155,26 @@ section {
 }
 
 #modeling {
-    /* background-color: #4cd5e1; */
+    position: relative;
+}
+
+#modelingCanvas {
+    position: absolute;
+    order: 2;
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    align-items: center;
+    justify-content: center;
+    color: #db5b5b; 
+    background-color: #f4f4f9;
 }
 
 .blob2 {
-    display: flex;
+    display: block;
+    position: absolute;
     flex-direction: column; 
     justify-content: center;
     text-align: right;
@@ -473,7 +488,7 @@ section {
     text-decoration: none;
     color: white;
     font-size: 24px;
-    border-radius: 12px;
+    /* border-radius: 12px; */
     transition: all 0.25s ease;
 }
 
@@ -488,7 +503,7 @@ section {
     width: 35px;
     height: 35px;
     display: block;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
 }
 
 .contact {
