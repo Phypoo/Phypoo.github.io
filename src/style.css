@@ -33,6 +33,22 @@ body {
     z-index: 9999;
 }
 
+#textVideo {
+    background: transparent;
+}
+
+#phypo {
+    position: relative;
+    width: 700px;
+}
+
+#firstText {
+    font-size: 150px;
+    font-weight: 900;
+    background-color: transparent;
+    stroke: white;
+    stroke-width: 1px;
+}
 
 .head {
     text-shadow: 0 0 5px rgba(255,255,255,0.4);
@@ -161,15 +177,14 @@ section {
 #modelingCanvas {
     position: absolute;
     order: 2;
-    width: 500px;
-    height: 500px;
+    width: 700px;
+    height: 700px;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     align-items: center;
-    justify-content: center;
-    color: #db5b5b; 
-    background-color: #f4f4f9;
+    justify-content: center; 
+    background: transparent;
 }
 
 .blob2 {
@@ -184,10 +199,21 @@ section {
 }
 
 #printing {
-    /* background-color: #fdb100; */
+    position: relative;
 }
 
+#printingCanvas {
+    position: absolute;
+    order: 2;
+    width: 700px;
+    height: 700px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: radial-gradient(circle, #ecd26c2a 0%, transparent 50%);
+}
 .blob3 {
+    position: absolute;
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -589,11 +615,11 @@ section {
 ion-icon {
     font-size: 35px;
     color: #f4f4f9;
-   filter: drop-shadow(0 0 10px #f7f5f598);
+    filter: drop-shadow(0 0 10px #f7f5f598);
 
 }
 
-img {
+#picture {
     position: absolute;
     display:flex;
     width: 200px;

@@ -18,11 +18,42 @@ export { sections, sectionCount };
 window.addEventListener("wheel", function(event){
 
 
+    const canvas3D = document.getElementById("modelingCanvas");
+    const canvasPrint = document.getElementById("printingCanvas");
+
+
+    const mouseOver3D =
+        canvas3D && canvas3D.matches(":hover");
+
+
+    const mouseOverPrint =
+        canvasPrint && canvasPrint.matches(":hover");
+
+
+
+    // Allow CTRL + wheel zoom inside canvases
+    if(event.ctrlKey){
+
+        return;
+
+    }
+
+    if(mouseOver3D || mouseOverPrint){
+
+        return;
+
+    }
+
+
+
     event.preventDefault();
 
 
+
     if(isScrolling){
+
         return;
+
     }
 
 
@@ -30,7 +61,7 @@ window.addEventListener("wheel", function(event){
 
 
 
-    if(event.deltaY > 0){
+    if(event.deltaY > 0){   
 
         currentSection++;
 
