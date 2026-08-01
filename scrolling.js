@@ -1,9 +1,10 @@
 const sections = document.querySelectorAll("header, section");
 const sectionCount = sections.length;
 
-
+let previousSection = 0;
 let currentSection = 0;
 let isScrolling = false;
+let targetSection = 0;   // where we're currently traveling
 
 
 // For animations.js
@@ -56,24 +57,23 @@ window.addEventListener("wheel", function(event){
 
     }
 
-
+    updatePreviouseSection();
     updateCurrentSection();
-
-
-
+    
+    
+    
     if(event.deltaY > 0){   
-
+        
         currentSection++;
-
+        
     }
     else{
-
+        
         currentSection--;
-
+        
     }
-
-
-
+    
+    
     clampSection();
 
 
@@ -87,11 +87,13 @@ window.addEventListener("wheel", function(event){
 
 
 
+// ============================== ==============================
 
+// ============================== ==============================
+// MOBILE TOUCH 
+// ============================== ==============================
 
-// ==============================
-// MOBILE TOUCH
-// ==============================
+// ============================== ==============================
 
 
 let touchStartY = 0;
@@ -154,7 +156,7 @@ window.addEventListener("touchend", function(event){
     }
 
 
-
+    updatePreviouseSection();
     updateCurrentSection();
 
 
@@ -168,6 +170,7 @@ window.addEventListener("touchend", function(event){
 
         currentSection--;
 
+
     }
 
 
@@ -177,6 +180,8 @@ window.addEventListener("touchend", function(event){
 
     scrollToSection(currentSection);
 
+    designAnimation();
+
 
 
 }, {passive:false});
@@ -184,22 +189,18 @@ window.addEventListener("touchend", function(event){
 
 
 
-
-
-
-
 // ==============================
 // FIND REAL CURRENT SECTION
 // ==============================
+const updatePreviouseSection = ()=> {
 
-function updateCurrentSection(){
+    previousSection = currentSection
+}
 
+const updateCurrentSection = ()=> {
 
     let closest = 0;
-
     let smallestDistance = Infinity;
-
-
 
     sections.forEach(function(section,index){
 
@@ -220,18 +221,13 @@ function updateCurrentSection(){
         }
 
 
-
+        currentSection = closest
+    
     });
 
 
-
-    currentSection = closest;
-
-
+    
 }
-
-
-
 
 
 
@@ -258,6 +254,7 @@ function clampSection(){
     }
 
 
+
 }
 
 
@@ -272,27 +269,14 @@ function clampSection(){
 
 function scrollToSection(index){
 
-
     isScrolling = true;
 
-
-
     const start = window.scrollY;
-
     const target = sections[index].offsetTop;
-
-
     const distance = target - start;
-
-
-
     const duration = 1000;
 
-
-
     let startTime = null;
-
-
 
 
     function animate(time){
@@ -349,19 +333,15 @@ function scrollToSection(index){
 
             isScrolling = false;
 
-
-
-            sendSectionEvent(index);
-
-
+            designAnimation();
         }
 
 
     }
 
 
-
     requestAnimationFrame(animate);
+
 
 
 }
@@ -376,48 +356,28 @@ function scrollToSection(index){
 // SMOOTH CURVE
 // ==============================
 
-function easeInOut(t){
-
-
+let easeInOut = (t)=> {
+    
+    
     return t < 0.5
-
-    ? 4 * t * t * t
-
+    
+    ? 4 * Math.pow(t, 3)
+    
     : 1 - Math.pow(-2 * t + 2,3) / 2;
-
-
+    
+    
 }
 
+export {previousSection, currentSection};
 
+const logo = document.getElementById("logo")
 
+const designAnimation = ()=> {
 
+    if(currentSection >= previousSection && currentSection === 1) {
+        logo.classList.add("active");
+    } else if (currentSection <= previousSection && currentSection < 1) {
+        logo.classList.remove("active");
+    }
 
-
-
-// ==============================
-// ANIMATION EVENT
-// ==============================
-
-function sendSectionEvent(index){
-
-
-    window.dispatchEvent(
-
-        new CustomEvent(
-            "sectionChanged",
-            {
-
-                detail:{
-
-                    currentSection:index
-
-                }
-
-            }
-
-        )
-
-    );
-
-
-}
+};  

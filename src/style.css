@@ -5,49 +5,103 @@ html, body {
 body {
     /* background:linear-gradient(135deg,#ff8800,#d0ff00);     */
     /* use a valid radial gradient (angle not valid for radial) */
-    background:
+    /* background:
         radial-gradient(circle at 20% 20%, #143847 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, #34043d 0%, transparent 50%),
         radial-gradient(circle at 20% 50%, #690c5a 0%, transparent 50%),
         radial-gradient(circle at 100% 100%, #1100a7 0%, transparent 50%),
-        #050511;    
+        #050511;     */
     background-repeat: no-repeat;
+    background-color: #789daa;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
 
 .welcome {
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; 
     top: 0;
     left: 0;
     font-size: 30px;
     width: 100%;
-    height: 120svh;
-    color: #ffffff;
+    height: 100svh;
+    padding-bottom: 0%;
+}
+
+.phypoNametag {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    width: 80%;
+    z-index: 1;
+    order: 1;
+}
+
+.phypoNametag:nth-child(1) {
+    color: transparent;
+
+}
+
+.phypoNametag:nth-child(2) {
+    color: #FFFFFF;
+
+}
+
+#welcomeText {
+    position: absolute;
+    transform: translate(0%, 50%);
+    height: 80px;
+    bottom: 10%;
+    color: white;
+    font-size: 25px;
+    z-index: 1;
+    order: 2;
+}
+
+#welcomeText::before {
+    content: '';
+    width: 200px;
+    height: 5px;
+    top: -5px;
+    color: #f4f4f9;
+    background-color: #db5b5b;
+}
+
+#stainOne {
+    position: absolute;
+    transform: translate(0%, 0%);
+    z-index: -3;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+    bottom: 0%;
+    left: 0%;
+    width:25%;
+    pointer-events: none;
+    z-index: 0;
 }
 
-#textVideo {
-    background: transparent;
+#stainOneSpilt {
+    position: absolute;
+    transform: translate(0%, 0%);
+    z-index: -3;
+    left: 0;
+    display: flex;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
 }
 
-#phypo {
-    position: relative;
-    width: 700px;
-}
-
-#firstText {
-    font-size: 150px;
-    font-weight: 900;
-    background-color: transparent;
-    stroke: white;
-    stroke-width: 1px;
+#stainFour {
+    position: absolute;
+    transform: translate(0%, 0%);
+    z-index: -3;
+    display: flex;
+    top: 0%;
+    right: 0%;
+    width: 45%;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .head {
@@ -210,7 +264,6 @@ section {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    background: radial-gradient(circle, #ecd26c2a 0%, transparent 50%);
 }
 .blob3 {
     position: absolute;
@@ -270,11 +323,8 @@ section {
 
 
 @media (max-width: 1000px) {
+
     #logo {
-        display: none;
-    }
-    
-    #logo.active {
         display: block;
         width: 700px;
         height: 700px;
@@ -545,6 +595,7 @@ section {
 .contentofcontact {
     display: flex;
     justify-content: center;
+    height: 100svh;
     align-items: center;
 }
 .vBox {
