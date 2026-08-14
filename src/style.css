@@ -42,7 +42,7 @@ body {
 .phypoNametag {
     position: relative;
     width: 1000px;
-    height: fit-content;
+    /* height: fit-content; */
     max-width: 80%;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -308,6 +308,42 @@ section {
 
 @media (max-width: 1000px) {
 
+    .phypoNametag {
+        position: relative;
+        width: 100%;
+        /* height: fit-content; */
+        max-width: 80%;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }   
+
+    .logo-mask{
+        position: absolute;
+
+        mask-image: url("/PhypoName/phypoSolidSmallMedia.svg");
+        -webkit-mask-image: url("/PhypoName/phypoSolidSmallMedia.svg");
+
+        mask-size: 100% 100%;
+        -webkit-mask-size: 100% 100%;
+
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+    }
+
+    .strokeSvg {
+       display: none;
+    }
+
+    .logo-mask video{
+        width: 300%;
+        height: 300%;
+        object-fit: cover;
+    }
+    
     #logo {
         display: block;
         width: 700px;
