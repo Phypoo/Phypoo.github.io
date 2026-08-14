@@ -78,6 +78,10 @@ body {
     filter: drop-shadow(0 0 10px #ffffff);
 }
 
+.strokeSvg1 {
+    display: none;
+}
+
 
 #welcomeText::before {
     content: '';
@@ -338,9 +342,18 @@ section {
        display: none;
     }
 
+    .strokeSvg1 {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+        order: 1;
+        filter: drop-shadow(0 0 10px #ffffff);
+    }
+
     .logo-mask video{
-        width: 300%;
-        height: 300%;
+        width: 350%;
+        height: 350%;
         object-fit: cover;
     }
     
