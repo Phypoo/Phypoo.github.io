@@ -21,7 +21,6 @@ body {
 .welcome {
     position: relative;
     display: flex;
-    justify-content: center; 
     top: 0;
     left: 0;
     font-size: 30px;
@@ -29,28 +28,8 @@ body {
     height: 100svh;
     padding-bottom: 0%;
 }
-
-.phypoNametag {
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    width: 80%;
-    z-index: 1;
-    order: 1;
-}
-
-.phypoNametag:nth-child(1) {
-    color: transparent;
-
-}
-
-.phypoNametag:nth-child(2) {
-    color: #FFFFFF;
-
-}
-
 #welcomeText {
-    position: absolute;
+    position: relative;
     transform: translate(0%, 50%);
     height: 80px;
     bottom: 10%;
@@ -60,6 +39,46 @@ body {
     order: 2;
 }
 
+.phypoNametag {
+    position: relative;
+    width: 1000px;
+    height: fit-content;
+    max-width: 80%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}   
+.logo-mask{
+    position: absolute;
+
+    mask-image: url("/PhypoName/phypoSolid.svg");
+    -webkit-mask-image: url("/PhypoName/phypoSolid.svg");
+
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
+
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+}
+
+.logo-mask video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.strokeSvg {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    order: 1;
+    filter: drop-shadow(0 0 10px #ffffff);
+}
+
+
 #welcomeText::before {
     content: '';
     width: 200px;
@@ -67,41 +86,6 @@ body {
     top: -5px;
     color: #f4f4f9;
     background-color: #db5b5b;
-}
-
-#stainOne {
-    position: absolute;
-    transform: translate(0%, 0%);
-    z-index: -3;
-    display: flex;
-    bottom: 0%;
-    left: 0%;
-    width:25%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-#stainOneSpilt {
-    position: absolute;
-    transform: translate(0%, 0%);
-    z-index: -3;
-    left: 0;
-    display: flex;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-#stainFour {
-    position: absolute;
-    transform: translate(0%, 0%);
-    z-index: -3;
-    display: flex;
-    top: 0%;
-    right: 0%;
-    width: 45%;
-    pointer-events: none;
-    z-index: 0;
 }
 
 .head {
@@ -441,7 +425,9 @@ section {
 
     border-radius:999px;
     background:white;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.26);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.26);
+    filter: drop-shadow(0 0 10px #ffffff);
+
 
     transition: transform .65s cubic-bezier(.34, 1.56, .64, 1);
 }

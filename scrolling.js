@@ -335,18 +335,14 @@ function scrollToSection(index){
 
             designAnimation();
         }
-
-
+        
+        
     }
-
-
+    
+    
     requestAnimationFrame(animate);
-
-
-
+    
 }
-
-
 
 
 
@@ -367,8 +363,6 @@ let easeInOut = (t)=> {
     
     
 }
-
-export {previousSection, currentSection};
 
 const logo = document.getElementById("logo")
 
