@@ -29,20 +29,38 @@ body {
     padding-bottom: 0%;
 }
 #welcomeText {
-    position: relative;
-    transform: translate(0%, 50%);
-    height: 80px;
+    position: absolute;
+    display: flex;
+    transform: translate(-50%, 50%);
     bottom: 10%;
+    left: 50%;
+    height: 80px;
     color: white;
-    font-size: 25px;
+    font-size: clamp(10px, 5vw, 20px);
     z-index: 1;
     order: 2;
+    filter: drop-shadow(0 0 10px #f7f5f598);
+
+}
+
+#welcomeText::before {
+    content: '';
+    position: absolute;
+    transform: translate(-50%, 50%);
+    left: 50%;
+    width: 200px;
+    height: 5px;
+    top: -30px;
+    color: #f4f4f9;
+    background-color: #f7f7f7c5;
+    border-radius: 3px;
+    filter: drop-shadow(0 0 10px #f7f5f5d5);
 }
 
 .phypoNametag {
     position: relative;
     width: 1000px;
-    /* height: fit-content; */
+    height: fit-content;
     max-width: 80%;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -59,7 +77,7 @@ body {
 
     mask-size: 100% 100%;
     -webkit-mask-size: 100% 100%;
-
+    
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
 }
@@ -83,14 +101,6 @@ body {
 }
 
 
-#welcomeText::before {
-    content: '';
-    width: 200px;
-    height: 5px;
-    top: -5px;
-    color: #f4f4f9;
-    background-color: #db5b5b;
-}
 
 .head {
     text-shadow: 0 0 5px rgba(255,255,255,0.4);
@@ -352,8 +362,8 @@ section {
     }
 
     .logo-mask video{
-        width: 350%;
-        height: 350%;
+        width:100%;
+        height: 100%;
         object-fit: cover;
     }
     
