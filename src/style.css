@@ -8,8 +8,47 @@ body {
     color: #f4f4f9;
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-    border-radius: 40px;
+    font-family: sans-serif;    
+}
+
+.viewport {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#TL {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+}
+
+#TR {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70px;
+    height: 70px;
+}
+
+#BR {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 70px;
+}
+
+#BL {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
 }
 
 .background {
