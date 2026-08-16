@@ -69,8 +69,15 @@ body {
     justify-content: center;
     align-items: center;
 }   
+.strokeSvg {
+    width: 100%;
+    z-index: 2;
+    order: 1;
+    filter: drop-shadow(0 0 10px #ffffff);
+}
 .logo-mask{
     position: absolute;
+    width: 100%;
 
     mask-image: url("/PhypoName/phypoSolid.svg");
     -webkit-mask-image: url("/PhypoName/phypoSolid.svg");
@@ -82,19 +89,12 @@ body {
     -webkit-mask-repeat: no-repeat;
 }
 
-.logo-mask video{
+#small {
+    display: flex;
     width: 100%;
     height: 100%;
-    object-fit: cover;
 }
 
-.strokeSvg {
-    position: absolute;
-    width: 100%;
-    z-index: 2;
-    order: 1;
-    filter: drop-shadow(0 0 10px #ffffff);
-}
 
 .strokeSvg1 {
     display: none;
@@ -324,47 +324,50 @@ section {
 
     .phypoNametag {
         position: relative;
-        width: 100%;
-        /* height: fit-content; */
         max-width: 80%;
         transform: translate(-50%, -50%);
         top: 50%;
         left: 50%;
-        display: inline-flex;
+        display: flex;
         justify-content: center;
         align-items: center;
     }   
 
-    .logo-mask{
-        position: absolute;
-
-        mask-image: url("/PhypoName/phypoSolidSmallMedia.svg");
-        -webkit-mask-image: url("/PhypoName/phypoSolidSmallMedia.svg");
-
-        mask-size: 100% 100%;
-        -webkit-mask-size: 100% 100%;
-
-        mask-repeat: no-repeat;
-        -webkit-mask-repeat: no-repeat;
-    }
-
-    .strokeSvg {
-       display: none;
-    }
-
     .strokeSvg1 {
         display: flex;
-        position: absolute;
         width: 100%;
         z-index: 2;
         order: 1;
         filter: drop-shadow(0 0 10px #ffffff);
     }
 
-    .logo-mask video{
-        width:100%;
+    .logo-mask {
+        position: absolute;
+        inset: 0;
+
+        mask-image: url("/PhypoName/phypoSolidSmallMedia.svg");
+        -webkit-mask-image: url("/PhypoName/phypoSolidSmallMedia.svg");
+
+        mask-size: contain;
+        -webkit-mask-size: contain;
+
+        mask-position: center;
+        -webkit-mask-position: center;
+
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+    }
+
+    .strokeSvg {
+        display: none;
+    }
+
+
+    #small{
         height: 100%;
-        object-fit: cover;
+        width: auto;
+        display: flex;
+        overflow: visible;
     }
     
     #logo {
