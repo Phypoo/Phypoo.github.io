@@ -3,19 +3,25 @@ html, body {
 }
 
 body {
-    /* background:linear-gradient(135deg,#ff8800,#d0ff00);     */
-    /* use a valid radial gradient (angle not valid for radial) */
-    /* background:
-        radial-gradient(circle at 20% 20%, #143847 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, #34043d 0%, transparent 50%),
-        radial-gradient(circle at 20% 50%, #690c5a 0%, transparent 50%),
-        radial-gradient(circle at 100% 100%, #1100a7 0%, transparent 50%),
-        #050511;     */
     background-repeat: no-repeat;
     background-color: #789daa;
+    color: #f4f4f9;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    border-radius: 40px;
+}
+
+.background {
+    position: relative;
+    transform: translate(-0%, -50%);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    width: 50%;
 }
 
 .welcome {
@@ -28,6 +34,7 @@ body {
     height: 100svh;
     padding-bottom: 0%;
 }
+
 #welcomeText {
     position: absolute;
     display: flex;
@@ -325,6 +332,7 @@ section {
     .phypoNametag {
         position: relative;
         max-width: 80%;
+        max-height: 40%;
         transform: translate(-50%, -50%);
         top: 50%;
         left: 50%;
@@ -334,8 +342,10 @@ section {
     }   
 
     .strokeSvg1 {
-        display: flex;
-        width: 100%;
+        display: block;
+        max-width: 100%;
+        max-height: 40%;
+        object-fit:fill;
         z-index: 2;
         order: 1;
         filter: drop-shadow(0 0 10px #ffffff);
@@ -476,7 +486,7 @@ section {
 
 #line {
     position:fixed;
-    margin-top: 10px;
+    margin: 0;
 
     top:12px;
     left:50%;
