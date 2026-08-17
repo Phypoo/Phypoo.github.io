@@ -1,11 +1,13 @@
 const sections = document.querySelectorAll("header, section");
 const sectionCount = sections.length;
 
+console.log(sections)
+
 let previousSection = null;
-let currentSection = 0;
 let isScrolling = false;
 let targetSection = 0;   // where we're currently traveling
 
+let currentSection = Math.floor(window.scrollY / window.innerHeight)
 
 // For animations.js
 export { sections, sectionCount };
@@ -483,3 +485,4 @@ const introAnimation = () => {
 introAnimation();
 
 console.log("currentSection: " + currentSection);
+console.log("previousSection: " + previousSection); 
