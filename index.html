@@ -6,7 +6,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/src/style.css">
-	<script src="main.js" defer></script>
+	<script src="main.js" type="module" defer></script>
 	<script src="src/modeling.js" type="module" defer></script>
 	<script src="src/printing.js" type="module" defer></script>
 	<script src="scrolling.js" type="module" defer></script>
@@ -15,11 +15,16 @@
 	<title>Phypo</title>
 	<link rel="icon" type="image/svg+xml" href="Icons/favicon.svg">
 	<link rel="manifest" href="/manifest.json">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DynaPuff:wdth,wght@75..100,400..700&display=swap"
+		rel="stylesheet">
+
 
 </head>
 
 <body>
-	<div class="viewport">
+	<!-- <div class="viewport">
 		<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 		<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg id="TL"
 			width="100%" height="100%" viewBox="0 0 709 709" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -49,20 +54,23 @@
 			<path d="M708.661,708.661l-708.661,0l0,-708.661c0,391.121 317.541,708.661 708.661,708.661Z"
 				style="fill:#fff;" />
 		</svg>
-	</div>
+	</div> -->
 	<div class="snapping">
 		<header class="welcome">
 			<div class="phypoNametag">
 				<div class="logo-mask">
 					<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 					<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-					<svg id="small" width="100%" height="100%" viewBox="0 0 1134 709" version="1.1"
+					<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+					<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+					<svg width="100%" height="100%" viewBox="0 0 1134 709" version="1.1"
 						xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 						xml:space="preserve" xmlns:serif="http://www.serif.com/"
 						style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
 						<path id="little"
-							d="M1133.86,476.22c0.892,70.769 0,232.441 0,232.441l-1133.86,0c0,0 -1.821,-150.978 0,-198.425c3.79,-98.782 107.851,-129.887 158.74,-113.386c53.12,17.225 142.466,44.532 147.402,45.355c169.628,28.271 178.893,-87.077 251.328,-158.74c34.657,-34.289 102.278,-91.387 179.538,-52.014c120.165,61.239 137.782,161.507 260.787,178.841c60.144,8.476 115.367,53.186 136.063,65.928Z"
-							style="fill:#fff;stroke:#fff;stroke-width:0.24px;stroke-linecap:round;stroke-miterlimit:1.5;" />
+							d="M521.575,622.377c-4.423,-1.081 -10.346,-2.34 -17.008,-3.48c-3.603,-0.617 -7.423,-1.198 -11.339,-1.698c-3.727,-0.475 -7.541,-0.877 -11.338,-1.163c-5.835,-0.439 -11.629,-0.607 -17.008,-0.356c-4.072,0.19 -7.906,0.62 -11.339,1.355c-3.238,0.693 -6.118,1.657 -8.504,2.945c-1.938,1.047 -5.35,3.561 -9.266,6.784c-2.462,2.027 -5.123,4.333 -7.742,6.731c-2.904,2.658 -5.756,5.43 -8.227,8.056c-2.473,2.628 -4.565,5.11 -5.946,7.19c-1.395,2.101 -3.065,7.51 -4.401,12.684c-1.339,5.188 -2.343,10.139 -2.396,11.283c-0.584,12.534 1.722,20.323 6.797,25.244c5.408,5.243 13.959,7.229 25.512,8.228c6.591,0.569 14.159,0.818 22.677,1.166c3.955,0.161 11.342,0.349 19.843,0.53c7.23,0.155 15.265,-1.342 22.677,-1.214c4.042,0.069 7.899,0.88 11.339,0.932c7.543,0.115 13.081,-0.304 14.173,-0.319c8.657,-0.115 13.886,-1.359 17.324,-5.267c3.705,-4.214 5.327,-9.917 6.913,-15.564c0.416,-1.48 1.023,-8.267 0.962,-16.132c-0.024,-3.115 -0.153,-6.398 -0.44,-9.587c-0.514,-5.723 -1.538,-11.144 -3.379,-14.746c-2.585,-5.059 -6.536,-9.944 -11.387,-14.015c-2.712,-2.276 -5.705,-4.297 -8.898,-5.952c-3.042,-1.577 -6.265,-2.82 -9.599,-3.635Z"
+							style="fill:#fff;" />
+					</svg>
 					</svg>
 					<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
 					<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/MorphSVGPlugin.min.js"></script>
@@ -71,6 +79,8 @@
 				<img class="strokeSvg1" src="/PhypoName/phypoStrokeSmallMedia.svg">
 			</div>
 			<p id="welcomeText">Vitaj na mojej novej stranke</p>
+			<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/SplitText.min.js"></script>
 		</header>
 		<section class="left" , id="designing">
 			<svg id="logo" width="100%" height="100%" viewBox="0 0 709 709" version="1.1"
