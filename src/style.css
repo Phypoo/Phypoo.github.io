@@ -194,6 +194,11 @@ section {
     /* background-color: #090829; */
     justify-content: center;
     align-items: center;
+
+    background-image: url(/backroundPictures/three.png);
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #logo {
