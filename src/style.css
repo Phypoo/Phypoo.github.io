@@ -11,13 +11,13 @@ body {
     font-family: sans-serif;    
 }
 
-.snapping {
+/* .snapping {
     
     background-image: url(/backroundPictures/allInOne.png);
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
-}
+} */
 
 .background {
     position: relative;
@@ -40,6 +40,11 @@ body {
     width: 100%;
     height: 110svh;
     padding-bottom: 0%;
+
+    background-image: url(/backroundPictures/one.png);
+    background-position: center top;    
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #welcomeText {
@@ -163,7 +168,6 @@ body {
     height: 120svh;
     width: 100%;
     display: flex;
-    align-items: center;
 }
 
 .right {
@@ -177,36 +181,30 @@ body {
 section {
     min-height: 120vh;
     display: flex;
-    align-items: center;
     transform: translateY(-10svh);
-
 }
 
 #designing {
     position: relative;
-    /* background-color: #db5b5b; */
-    /* background-color: #090829; */
-    justify-content: center;
-    align-items: center;
+
+    background-image: url(/backroundPictures/three.png);
+    background-position: center top;    
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #logo {
-    display: none;
-}
-
-#logo.active {
     display: block;
     position: absolute;
     order: 2;
     width: 700px;
-    height: 700px;
+    height: 700px;  
     padding: 10dvw;
-    transform: translate(-50, -50);
-    align-items: center;
-    justify-content: center;    
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
     stroke-dasharray: 1420;
     stroke-dashoffset: 1420;
-    animation: animate 2s ease forwards;
     filter: drop-shadow(0 0 10px #ffffff);
 }
 
@@ -223,41 +221,34 @@ section {
     filter: drop-shadow(0 0 10px #ffffff);
 }
 
-@keyframes animate {
-    0% {
-        stroke-dashoffset: 1420;
-    }
-    100% {
-        stroke-dashoffset: 0;
-    }
-}
-
 .blob1 {
-    display: none;
-}
-
-.blob1.active {
-    display: block;
     order: 1;
     display: flex;
+    margin-left: 50px;
+    transform: translateX(-150%);
     flex-direction: column; 
     justify-content: center;
-    margin-left: 5dvh;
     width: 40%;
     max-width: 1100px;
-    animation: animate 2s ease forwards;
+    filter: drop-shadow(0 0 5px #ffffff);
+    transform-origin: top left;
 }
 
 #modeling {
     position: relative;
+
+    background-image: url(/backroundPictures/eight.png);
+    background-position: center top;    
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #modelingCanvas {
     position: absolute;
     order: 2;
-    width: 700px;
+    width: 100svw;
     max-width: 100%;
-    height: 700px;
+    height: 100svh;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -279,6 +270,11 @@ section {
 
 #printing {
     position: relative;
+
+    background-image: url(/backroundPictures/nine.png);
+    background-position: center top;    
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #printingCanvas {
@@ -292,17 +288,24 @@ section {
     transform: translateX(-50%) translateY(-50%);
 }
 .blob3 {
-    position: absolute;
+    order: 1;
     display: flex;
+    margin-left: 50px;
     flex-direction: column; 
     justify-content: center;
-    margin-left: 5dvh;
     width: 40%;
     max-width: 1100px;
+    filter: drop-shadow(0 0 5px #ffffff);
+    transform-origin: top left;
 }
 
 #propagation {
     /* background-color: #9ad300; */
+
+    background-image: url(/backroundPictures/ten.png);
+    background-position: center top;    
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .blob4 {
@@ -317,6 +320,11 @@ section {
 
 #vcards {
     /* background-color: #26874c; */
+
+    background-image: url(/backroundPictures/twelwe.png);
+    background-position: center top;    
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .blob5 {
@@ -335,6 +343,11 @@ section {
 
 #webdesign {
     /* background-color: #aa5ae0; */
+
+    background-image: url(/backroundPictures/thirteen.png);
+    background-position: center top;    
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .blob6 {
@@ -393,14 +406,6 @@ section {
     .strokeSvg {
         display: none;
     }
-
-
-    #small{
-        height: 100%;
-        width: auto;
-        display: flex;
-        overflow: visible;
-    }
     
     #logo {
         display: block;
@@ -410,7 +415,6 @@ section {
         padding: 10dvw;
         transform: translate(-50, -50);
         order: 1;
-        animation: animate 2s ease forwards;
 
     }
 

@@ -9,10 +9,6 @@ let targetSection = 0;   // where we're currently traveling
 
 let currentSection = Math.floor(window.scrollY / window.innerHeight)
 
-// For animations.js
-export { sections, sectionCount };
-
-
 
 // ==============================
 // DESKTOP MOUSE WHEEL
@@ -126,7 +122,7 @@ window.addEventListener("touchmove", function(event){
     event.preventDefault();
 
 
-}, {passive:false});
+});
 
 
 
@@ -260,11 +256,6 @@ function clampSection(){
 }
 
 
-
-
-
-
-
 // ==============================
 // CUSTOM SMOOTH SCROLL
 // ==============================
@@ -335,8 +326,10 @@ function scrollToSection(index){
 
             isScrolling = false;
 
-            designAnimation();
+        
+            animationTrigger();
             console.log("currentSection: " + currentSection);
+            console.log("previousSection: " + previousSection);
         }
         
         
@@ -347,7 +340,8 @@ function scrollToSection(index){
     
 }
 
-
+console.log("currentSection: " + currentSection);
+console.log("previousSection: " + previousSection);
 
 
 
@@ -367,17 +361,23 @@ let easeInOut = (t)=> {
     
 }
 
-const logo = document.getElementById("logo")
 
-const designAnimation = ()=> {
 
-    if(currentSection >= previousSection && currentSection === 1) {
-        logo.classList.add("active");
-    } else if (currentSection <= previousSection && currentSection < 1) {
-        logo.classList.remove("active");
-    }
 
-};  
+//--//
+  // Animations //
+//--//
+
+// const designAnimation = ()=> {
+    
+//     if(currentSection >= previousSection && currentSection === 1) {
+//         logo.classList.add("active");
+//     }
+//     else if (currentSection <= previousSection && currentSection < 1) {
+//         logo.classList.remove("active");
+//     }
+    
+// };  
 
 gsap.registerPlugin(MorphSVGPlugin);
 
@@ -389,27 +389,28 @@ let number = 0;
 
 function morph() {
     const nextShape = shapes[number];
-
+    
     gsap.to(path, {
         duration: 3,
         ease: "power1.inOut",
-
+        
         morphSVG: {
             shape: nextShape,
             shapeIndex: "auto"
         },
-
+        
         onComplete: () => {
             number++;
-
+            
             if (number >= shapes.length) {
                 number = 0;
             }
-
+            
             morph();
         }
     });
 }
+
 
 morph();
 
@@ -450,25 +451,34 @@ morph();
 //     tl.add(letterTl, i * 0.05);
 // });
 
+
+//section animations//
+
+//import//
 import { lineShow } from './main.js';
 
+//defination of variables//
 const welcomeText = document.getElementById("welcomeText");
 const phypo = document.querySelector(".phypoNametag");
 const backgroundIntro = document.querySelector(".backgroundIntro");
 const line = document.getElementById("line");
+const designing = document.getElementById('designing')
+const designLogo = document.getElementById("logo")
+const designText = document.querySelector('.blob1')
+
 
 const morphingAnimation = ()=> {
     phypo.animate([
         {
             opacity: 0,
-            transform: "translate(-50%, -300%) scale(0.9)"
+            transform: "translate(-50%, -50%) scale(3)"
         },
         {
             opacity: 1,
             transform: "translate(-50%, -50%) scale(1)"
         }
     ], {
-        duration: 3000,
+        duration: 2000,
         easing: "ease-in-out",
         fill: "forwards"
     });
@@ -484,5 +494,106 @@ const introAnimation = () => {
 
 introAnimation();
 
-console.log("currentSection: " + currentSection);
-console.log("previousSection: " + previousSection); 
+const designAnimation = ()=>{
+    designLogoAnimation();
+    designLogoAnimationScale();
+}
+
+const designLogoAnimation = ()=> {
+    if(window.innerWidth > window.innerHeight) {
+        designLogo.animate([
+            {
+                strokeDashoffset: "1420"
+            },
+            {
+                strokeDashoffset: "0"
+            }
+        ], {
+            duration: 3000,
+            easing: "ease-in-out",
+            fill: "forwards"
+        });
+    }
+    else {
+        designLogo.animate([
+            {
+                strokeDashoffset: "1420"
+            },
+            {
+                strokeDashoffset: "0"
+            }
+        ], {
+            duration: 3000,
+            easing: "ease-in-out",
+            fill: "forwards"
+        });
+    }
+};
+
+const designLogoAnimationScale = ()=> {
+    if(window.innerWidth > window.innerHeight) {
+        designLogo.animate([
+            {
+                transform: "translate(-50%, -50%) scale(1)"
+            },
+            {
+                transform: "translate(-10%, -50%) scale(0.8)"
+            }
+        ], {
+            duration: 3000,
+            easing: "ease-in-out",
+            fill: "forwards"
+        });
+    } 
+    else {
+         designLogo.animate([
+            {
+                transform: "translate(-50%, -50%) scale(1)"
+            },
+            {
+                transform: "translate(-10%, -50%) scale(0.8)"
+            }
+        ], {
+            duration: 3000,
+            easing: "ease-in-out",
+            fill: "forwards"
+        });
+    }
+};
+
+// const designLogoAnimation = ()=> {
+//     designing.animate([
+//         {
+//             backgroundPosition: "50% 0%"
+//         },
+//         {
+//             backgroundPosition: "0% 50%"
+//         }
+//     ], {
+//         duration: 3000,
+//         easing: "ease-in-out",
+//         fill: "forwards"
+//     });
+// }
+
+const designTextAnimation = ()=> {
+    designText.animate([
+        {
+            transform: "translate(-100%)"
+        },
+        {
+            transform: "translate(0)"
+        }
+    ], {
+        duration: 3000,
+        easing: "ease-in-out",
+        fill: "forwards"
+    });
+
+}
+
+const animations = [designAnimation,];
+
+const animationTrigger = () => {
+    animations[currentSection]();
+};
