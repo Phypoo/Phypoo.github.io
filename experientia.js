@@ -2,7 +2,7 @@
 
 // PLUGINS //
 
-import { gsap } from "gsap";
+import { gsap } from "./gsap";
 import { Observer } from "gsap/Observer";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
