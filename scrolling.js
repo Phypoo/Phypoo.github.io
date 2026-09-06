@@ -14,7 +14,7 @@ let currentSection = Math.floor(window.scrollY / window.innerHeight)
 // DESKTOP MOUSE WHEEL
 // ==============================
 
-window.addEventListener("wheel", function(event){
+document.addEventListener("wheel", function scrolling(event){
 
 
     const canvas3D = document.getElementById("modelingCanvas");
@@ -31,7 +31,7 @@ window.addEventListener("wheel", function(event){
 
 
     // Allow CTRL + wheel zoom inside canvases
-    if(event.ctrlKey){
+    if(event.ctrlKey){  
 
         return;
 
@@ -116,13 +116,13 @@ window.addEventListener("touchstart", function(event){
 
 
 
-window.addEventListener("touchmove", function(event){
+// window.addEventListener("touchmove", function(event){
 
 
-    event.preventDefault();
+//     event.preventDefault();
 
 
-});
+// });
 
 
 
@@ -133,7 +133,7 @@ window.addEventListener("touchend", function(event){
 
 
     if(isScrolling){
-        return;
+        return;w
     }
 
 
@@ -258,7 +258,8 @@ function clampSection(){
 
 // ==============================
 // CUSTOM SMOOTH SCROLL
-// ==============================
+// ==============================               
+
 
 function scrollToSection(index){
 
@@ -328,8 +329,7 @@ function scrollToSection(index){
 
         
             animationTrigger();
-            console.log("currentSection: " + currentSection);
-            console.log("previousSection: " + previousSection);
+        
         }
         
         
@@ -339,10 +339,6 @@ function scrollToSection(index){
     requestAnimationFrame(animate);
     
 }
-
-console.log("currentSection: " + currentSection);
-console.log("previousSection: " + previousSection);
-
 
 
 // ==============================
@@ -361,7 +357,8 @@ let easeInOut = (t)=> {
     
 }
 
-
+export {currentSection, previousSection};
+///
 
 
 //--//
@@ -456,6 +453,8 @@ morph();
 
 //import//
 import { lineShow } from './main.js';
+import * as animations from './animations.js';
+import { animationTrigger } from './animations.js';
 
 //defination of variables//
 const welcomeText = document.getElementById("welcomeText");
@@ -465,7 +464,6 @@ const line = document.getElementById("line");
 const designing = document.getElementById('designing')
 const designLogo = document.getElementById("logo")
 const designText = document.querySelector('.blob1')
-
 
 const morphingAnimation = ()=> {
     phypo.animate([
@@ -494,106 +492,17 @@ const introAnimation = () => {
 
 introAnimation();
 
-const designAnimation = ()=>{
-    designLogoAnimation();
-    designLogoAnimationScale();
-}
-
-const designLogoAnimation = ()=> {
-    if(window.innerWidth > window.innerHeight) {
-        designLogo.animate([
-            {
-                strokeDashoffset: "1420"
-            },
-            {
-                strokeDashoffset: "0"
-            }
-        ], {
-            duration: 3000,
-            easing: "ease-in-out",
-            fill: "forwards"
-        });
-    }
-    else {
-        designLogo.animate([
-            {
-                strokeDashoffset: "1420"
-            },
-            {
-                strokeDashoffset: "0"
-            }
-        ], {
-            duration: 3000,
-            easing: "ease-in-out",
-            fill: "forwards"
-        });
-    }
-};
-
-const designLogoAnimationScale = ()=> {
-    if(window.innerWidth > window.innerHeight) {
-        designLogo.animate([
-            {
-                transform: "translate(-50%, -50%) scale(1)"
-            },
-            {
-                transform: "translate(-10%, -50%) scale(0.8)"
-            }
-        ], {
-            duration: 3000,
-            easing: "ease-in-out",
-            fill: "forwards"
-        });
-    } 
-    else {
-         designLogo.animate([
-            {
-                transform: "translate(-50%, -50%) scale(1)"
-            },
-            {
-                transform: "translate(-10%, -50%) scale(0.8)"
-            }
-        ], {
-            duration: 3000,
-            easing: "ease-in-out",
-            fill: "forwards"
-        });
-    }
-};
-
-// const designLogoAnimation = ()=> {
-//     designing.animate([
-//         {
-//             backgroundPosition: "50% 0%"
-//         },
-//         {
-//             backgroundPosition: "0% 50%"
-//         }
-//     ], {
-//         duration: 3000,
-//         easing: "ease-in-out",
-//         fill: "forwards"
-//     });
-// }
-
-const designTextAnimation = ()=> {
-    designText.animate([
-        {
-            transform: "translate(-100%)"
-        },
-        {
-            transform: "translate(0)"
+const designAnimation = 
+    () => {
+        if (previousSection < currentSection) {
+            designLogoAnimation();
+            designLogoAnimationScale();
         }
-    ], {
-        duration: 3000,
-        easing: "ease-in-out",
-        fill: "forwards"
-    });
-
-}
-
-const animations = [designAnimation,];
-
-const animationTrigger = () => {
-    animations[currentSection]();
-};
+        else if (currentSection < 1) {
+            // ...
+        }
+        else {
+            // ...
+        }
+    }
+;
